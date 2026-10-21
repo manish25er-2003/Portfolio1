@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import profileImage from "./assets/profile-image.jpeg";
+import profileImage from "./assets/update-image22.png";
 
 const portfolioNav = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
   { label: "AI Tools", href: "#ai-tools" },
   { label: "Projects", href: "#projects" },
@@ -103,31 +104,34 @@ const projects = [
 
 const experience = [
   {
-    title: "Software Development Intern",
-    company: "ThinkNext Technologies",
-    period: "January 2025 – August 2025",
+    title: "Software Engineer Intern",
+    company: "ThinkNext",
+    period: "January 2025 – September 2025 · 9 months",
     status: "Intern",
     description:
-      "Gained practical experience in software and web application development. Worked on frontend and backend development tasks including CRUD functionality, REST APIs, database integration, debugging, testing, and Git/GitHub workflows.",
+      "Gained hands-on experience in web application development, working on frontend interfaces and backend functionality. Assisted with implementing features, debugging issues, integrating APIs, and managing database operations while collaborating with the development team.",
     icon: "💼",
+    logo: "TN",
+    logoBg: "linear-gradient(135deg, #0f172a, #1d4ed8)",
+    badgeBg: "rgba(96, 165, 250, 0.12)",
+    badgeColor: "#dbeafe",
+    roleTag: "Web Developer",
+    skills: ["PHP", "Laravel", "MySQL", "JavaScript", "HTML & CSS"],
   },
   {
-    title: "Software Developer",
-    company: "Baseline Technologies",
-    period: "August 2025 – December 2025",
-    status: "Developer",
-    description:
-      "Worked on web application development and API-based features. Implemented CRUD functionality and integrated frontend with backend APIs. Worked with databases, debugging, testing, and application improvements.",
-    icon: "🚀",
-  },
-  {
-    title: "Software Developer",
+    title: "Full-Stack Developer",
     company: "Binary Data",
     period: "December 2025 – Present",
     status: "Current",
     description:
-      "Working on web application development and backend/API integration. Developing and maintaining application features using modern web technologies. Working with databases, REST APIs, debugging, and application improvements.",
+      "Developing and maintaining web applications across frontend and backend systems. Working on responsive user interfaces, server-side functionality, REST API integration, database operations, and application debugging to deliver reliable and scalable solutions.",
     icon: "⭐",
+    logo: "BD",
+    logoBg: "linear-gradient(135deg, #0f172a, #10b981)",
+    badgeBg: "rgba(16, 185, 129, 0.12)",
+    badgeColor: "#d1fae5",
+    roleTag: "Full-Stack Developer",
+    skills: ["PHP", "Laravel", "JavaScript", "REST API", "Git"],
   },
 ];
 
@@ -206,7 +210,6 @@ export default function PortfolioPage() {
         background: "#0B0F19",
         color: "#E2E8F0",
         minHeight: "100vh",
-        fontFamily: "'Inter', sans-serif",
       }}
     >
       <div
@@ -240,14 +243,6 @@ export default function PortfolioPage() {
       />
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
-        
-        * {
-          font-family: 'Inter', sans-serif;
-        }
-        
-        .mono { font-family: 'Fira Code', monospace; }
-        
         .glass-panel {
           background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(12px);
@@ -256,18 +251,19 @@ export default function PortfolioPage() {
         }
         
         .glass-card {
-          background: rgba(255, 255, 255, 0.02);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: rgba(15, 23, 42, 0.72);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(96, 165, 250, 0.22);
+          box-shadow: 0 8px 30px rgba(37, 99, 235, 0.10);
           transition: all 0.3s ease;
         }
         
         .glass-card:hover {
-          background: rgba(255, 255, 255, 0.04);
-          border-color: rgba(99, 102, 241, 0.3);
-          transform: translateY(-4px);
-          box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+          background: rgba(15, 23, 42, 0.8);
+          border-color: rgba(96, 165, 250, 0.36);
+          transform: translateY(-3px);
+          box-shadow: 0 12px 35px rgba(37, 99, 235, 0.18);
         }
 
         .portfolio-desktop-nav {
@@ -352,23 +348,649 @@ export default function PortfolioPage() {
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
+
+        .about-layout {
+          display: grid;
+          grid-template-columns: 1.3fr 0.92fr;
+          gap: 42px;
+          align-items: stretch;
+        }
+
+        .my-approach-grid {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 22px;
+          margin-top: 30px;
+          position: relative;
+        }
+
+        .my-approach-connector {
+          position: absolute;
+          left: 12%;
+          right: 12%;
+          top: 70px;
+          height: 1px;
+          border-top: 1px dashed rgba(125, 211, 252, 0.5);
+          pointer-events: none;
+        }
+
+        .my-approach-item {
+          flex: 1;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+        }
+
+        .my-approach-icon-wrap {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 30% 30%, rgba(59,130,246,0.32), rgba(15,23,42,0.96) 62%);
+          border: 1px solid rgba(148, 163, 184, 0.18);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: inset 0 0 0 1px rgba(96,165,250,0.08), 0 18px 30px rgba(15, 23, 42, 0.6);
+          position: relative;
+        }
+
+        .my-approach-number-badge {
+          position: absolute;
+          top: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, rgba(13,18,34,0.96), rgba(30,41,59,0.92));
+          border: 1px solid rgba(148,163,184,0.2);
+          box-shadow: 0 8px 16px rgba(15,23,42,0.35);
+          color: #e2e8f0;
+          font-size: 18px;
+          font-weight: 700;
+        }
+
+        .my-approach-icon {
+          font-size: 38px;
+          color: #8ed8ff;
+          opacity: 0.95;
+          filter: drop-shadow(0 0 16px rgba(96,165,250,0.3));
+        }
+
+        .my-approach-title {
+          font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+          font-weight: 800;
+          color: white;
+          margin: 18px 0 0;
+          letter-spacing: -0.04em;
+        }
+
+        .my-approach-text {
+          color: #d7e0ee;
+          font-size: 0.96rem;
+          line-height: 1.5;
+          margin: 10px 0 0;
+          max-width: 200px;
+          text-align: center;
+        }
+
+        .education-section {
+          position: relative;
+          padding-top: 88px;
+          padding-bottom: 96px;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          background: rgba(7, 12, 20, 0.96);
+          overflow: hidden;
+        }
+
+        .education-section::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background-image: radial-gradient(circle at 10% 15%, rgba(59,130,246,0.18), transparent 30%), radial-gradient(circle at 90% 8%, rgba(59,130,246,0.16), transparent 30%);
+          pointer-events: none;
+        }
+
+        .education-shell {
+          position: relative;
+          z-index: 1;
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+
+        .education-header {
+          text-align: center;
+          margin-bottom: 28px;
+        }
+
+        .portfolio-section-title {
+          font-size: var(--type-section-heading) !important;
+          font-weight: 700 !important;
+          letter-spacing: var(--letter-heading) !important;
+          color: #dbeafe !important;
+          line-height: var(--line-heading) !important;
+          margin: 0 0 18px !important;
+        }
+
+        .portfolio-section-title span { color: inherit !important; }
+
+        .portfolio-page-heading {
+          font-size: var(--type-page-heading) !important;
+          font-weight: 700 !important;
+          line-height: var(--line-heading) !important;
+          letter-spacing: var(--letter-heading) !important;
+          color: #dbeafe !important;
+        }
+
+        .portfolio-greeting, .portfolio-typewriter-shell {
+          font-size: var(--type-subheading) !important;
+          font-weight: 600 !important;
+          line-height: 1.45 !important;
+          letter-spacing: 0 !important;
+        }
+
+        h4, h5 { font-size: var(--type-card-heading) !important; font-weight: 700 !important; line-height: var(--line-heading) !important; }
+        p { font-size: var(--type-body) !important; font-weight: 400 !important; line-height: var(--line-body) !important; }
+        button, label { font-size: var(--type-label) !important; font-weight: 600 !important; }
+        input, textarea, select { font-size: var(--type-label) !important; font-weight: 400 !important; }
+        .portfolio-desktop-nav a, .portfolio-mobile-nav-link { font-size: var(--type-label); font-weight: 600; }
+        .experience-section-subtitle, .education-subtitle { font-size: var(--type-body) !important; line-height: var(--line-body) !important; }
+        .education-overview-header h4, .experience-journey-panel h4 { font-size: var(--type-card-heading) !important; }
+        .education-card-title { font-size: var(--type-card-heading) !important; font-weight: 700 !important; line-height: var(--line-heading) !important; }
+        .education-card-subtitle, .experience-company { font-size: var(--type-organization) !important; font-weight: 600 !important; line-height: 1.45 !important; }
+        .experience-role { font-size: var(--type-subheading) !important; font-weight: 600 !important; line-height: 1.45 !important; }
+        .education-card-body, .experience-description { font-size: var(--type-body) !important; font-weight: 400 !important; line-height: var(--line-body) !important; }
+        .education-card-badge, .education-timeline-date, .experience-period { font-size: var(--type-metadata) !important; font-weight: 500 !important; }
+        .education-tag, .education-card-focus, .education-metric-label, .education-metric-sub { font-size: var(--type-helper) !important; font-weight: 400 !important; }
+        .education-card-focus { font-size: var(--type-label) !important; font-weight: 600 !important; }
+        .education-badge, .experience-status { font-size: var(--type-label) !important; font-weight: 600 !important; }
+        .experience-status { font-size: var(--type-metadata) !important; font-weight: 500 !important; }
+        .experience-skill { font-size: var(--type-helper) !important; font-weight: 400 !important; }
+        .education-metric-value { font-size: var(--type-subheading) !important; font-weight: 700 !important; line-height: 1.3 !important; }
+
+        .education-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 10px 18px;
+          border-radius: 9999px;
+          border: 1px solid rgba(96, 165, 250, 0.6);
+          background: rgba(15, 23, 42, 0.7);
+          color: #dbeafe;
+          margin-bottom: 16px;
+          font-size: 14px;
+          font-weight: 700;
+        }
+
+        .education-title {
+          font-size: clamp(2rem, 3.2vw, 2.65rem);
+          font-weight: 750;
+          letter-spacing: -0.045em;
+          color: #dbeafe;
+          margin: 0;
+          line-height: 1.12;
+        }
+
+        .education-title span {
+          color: #60a5fa;
+        }
+
+        .education-subtitle {
+          max-width: 760px;
+          margin: 18px auto 0;
+          color: #cbd5e1;
+          font-size: 18px;
+          line-height: 1.5;
+          font-weight: 400;
+        }
+
+        .education-layout {
+          display: grid;
+          grid-template-columns: 0.95fr 1.05fr;
+          gap: 26px;
+          align-items: start;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .education-overview-card {
+          background: #111c2d;
+          border: 1px solid rgba(96, 165, 250, 0.22);
+          border-radius: 18px;
+          box-shadow: 0 8px 30px rgba(37, 99, 235, 0.10);
+          padding: 22px 20px 18px;
+          margin-bottom: 18px;
+          transition: all 0.3s ease;
+        }
+
+        .education-overview-card:hover,
+        .education-quote-card:hover,
+        .education-metric-box:hover,
+        .education-card:hover,
+        .experience-journey-panel:hover,
+        .experience-timeline-card:hover {
+          transform: translateY(-3px);
+          border-color: rgba(96, 165, 250, 0.36);
+          box-shadow: 0 12px 35px rgba(37, 99, 235, 0.18);
+        }
+
+        .education-overview-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 18px;
+        }
+
+        .education-overview-icon {
+          width: 38px;
+          height: 38px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(14,116,144,0.18));
+          border: 1px solid rgba(125, 211, 252, 0.5);
+          color: #7dd3fc;
+          font-size: 18px;
+        }
+
+        .education-overview-header h4 {
+          font-size: clamp(1.8rem, 2.3vw, 2.8rem);
+          font-weight: 800;
+          color: white;
+          letter-spacing: -0.04em;
+          margin: 0;
+        }
+
+        .education-overview-copy {
+          color: #dbeafe;
+          font-size: 16px;
+          line-height: 1.7;
+          margin: 0;
+          max-width: 520px;
+        }
+
+        .education-grid-metrics {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
+          margin-top: 18px;
+        }
+
+        .education-metric-box {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          border: 1px solid rgba(96, 165, 250, 0.18);
+          border-radius: 14px;
+          padding: 14px 12px;
+          background: #142238;
+          min-height: 88px;
+          transition: all 0.3s ease;
+          box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+        }
+
+        .education-metric-icon {
+          width: 34px;
+          height: 34px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 16px;
+          flex-shrink: 0;
+        }
+
+        .education-metric-value {
+          font-size: 22px;
+          font-weight: 800;
+          color: white;
+          line-height: 1;
+        }
+
+        .education-metric-label {
+          font-size: 11px;
+          color: #cbd5e1;
+          margin-top: 2px;
+          line-height: 1.3;
+        }
+
+        .education-metric-sub {
+          font-size: 11px;
+          color: #dbeafe;
+          line-height: 1.45;
+          margin-top: 4px;
+        }
+
+        .education-quote-card {
+          background: #111c2d;
+          border: 1px solid rgba(96, 165, 250, 0.22);
+          border-radius: 18px;
+          padding: 18px 18px 14px;
+          font-size: 18px;
+          line-height: 1.5;
+          color: #dbeafe;
+          font-weight: 500;
+          font-style: italic;
+          box-shadow: 0 8px 30px rgba(37, 99, 235, 0.10);
+          transition: all 0.3s ease;
+        }
+
+        .education-timeline {
+          position: relative;
+          padding-left: 60px;
+          margin-top: 6px;
+        }
+
+        .education-timeline-line {
+          position: absolute;
+          left: 17px;
+          top: 8px;
+          bottom: 8px;
+          width: 2px;
+          background: linear-gradient(180deg, rgba(96,165,250,0.7), rgba(96,165,250,0.25), rgba(34,211,238,0.65));
+          border-radius: 999px;
+        }
+
+        .education-timeline-item {
+          position: relative;
+          display: grid;
+          grid-template-columns: 94px minmax(0, 1fr);
+          gap: 16px;
+          align-items: center;
+          margin-bottom: 24px;
+        }
+
+        .education-timeline-item:last-child { margin-bottom: 0; }
+
+        .education-timeline-dot {
+          position: absolute;
+          left: -18px;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          border: 2px solid rgba(11, 15, 25, 0.9);
+          box-shadow: 0 0 0 6px rgba(96,165,250,0.12);
+        }
+
+        .education-timeline-date {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-width: 82px;
+          padding: 10px 12px;
+          border-radius: 14px;
+          border: 1px solid rgba(148, 163, 184, 0.18);
+          font-size: 12px;
+          font-weight: 800;
+          line-height: 1.2;
+          text-align: center;
+          letter-spacing: 0.02em;
+          transform: translateY(2px);
+          box-shadow: 0 10px 24px rgba(15, 23, 42, 0.26);
+        }
+
+        .education-card {
+          background: #111c2d;
+          border: 1px solid rgba(96, 165, 250, 0.22);
+          border-radius: 18px;
+          box-shadow: 0 8px 30px rgba(37, 99, 235, 0.10);
+          padding: 18px 18px 16px;
+          min-height: 170px;
+          transition: all 0.3s ease;
+        }
+
+        .education-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 12px;
+        }
+
+        .education-card-head {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          min-width: 0;
+        }
+
+        .education-card-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 800;
+          font-size: 18px;
+          border: 1px solid rgba(148,163,184,0.12);
+          flex-shrink: 0;
+        }
+
+        .education-card-title {
+          font-size: var(--type-card-heading);
+          font-weight: 700;
+          color: white;
+          line-height: 1.2;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .education-card-subtitle {
+          font-size: var(--type-organization);
+          font-weight: 600;
+          color: #cbd5e1;
+          margin-top: 2px;
+        }
+
+        .education-card-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 6px 10px;
+          border-radius: 8px;
+          font-size: var(--type-metadata);
+          font-weight: 500;
+          white-space: nowrap;
+        }
+
+        .education-card-body {
+          color: #dbeafe;
+          font-size: var(--type-body);
+          line-height: var(--line-body);
+          margin: 0 0 12px;
+        }
+
+        .education-card-focus {
+          font-size: 12px;
+          color: #e2e8f0;
+          font-weight: 700;
+          margin-bottom: 8px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .education-tag-wrap {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+
+        .education-tag {
+          display: inline-flex;
+          align-items: center;
+          padding: 5px 9px;
+          border-radius: 8px;
+          background: rgba(148,163,184,0.08);
+          border: 1px solid rgba(148,163,184,0.12);
+          color: #dbeafe;
+          font-size: var(--type-helper);
+          font-weight: 600;
+        }
+
+        .experience-grid {
+          display: grid;
+          grid-template-columns: 0.95fr 1.05fr;
+          gap: 24px;
+          max-width: 1180px;
+          margin: 0 auto;
+          align-items: stretch;
+        }
+
+        .experience-journey-panel,
+        .experience-timeline-card {
+          background: rgba(15, 23, 42, 0.72);
+          border: 1px solid rgba(96, 165, 250, 0.22);
+          border-radius: 18px;
+          box-shadow: 0 8px 30px rgba(37, 99, 235, 0.10);
+          transition: all 0.3s ease;
+        }
+
+        .experience-timeline-shell {
+          position: relative;
+          padding-left: 64px;
+        }
+
+        .experience-timeline-line {
+          display: block;
+          position: absolute;
+          left: 25px;
+          top: 30px;
+          bottom: 30px;
+          width: 2px;
+          border-radius: 99px;
+          background: linear-gradient(180deg, #60a5fa, rgba(96,165,250,.24));
+        }
+
+        .experience-timeline-item {
+          position: relative;
+          display: grid;
+          grid-template-columns: 52px minmax(0, 1fr);
+          gap: 12px;
+          align-items: center;
+          margin-bottom: 18px;
+        }
+
+        .experience-timeline-dot {
+          position: absolute;
+          left: -18px;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          border: 2px solid rgba(11, 15, 25, 0.9);
+        }
+
+        .experience-timeline-icon {
+          width: 50px;
+          height: 50px;
+          display: grid;
+          place-items: center;
+          border-radius: 15px;
+          position: relative;
+          z-index: 1;
+          background: #eaf4ff;
+          color: #2563a8;
+          border: 1px solid #b8d8fb;
+          box-shadow: 0 5px 16px rgba(37,99,235,.15);
+          font-size: 21px;
+          transition: box-shadow .22s ease, transform .22s ease;
+        }
+
+        .experience-timeline-icon:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 22px rgba(37,99,235,.26);
+        }
+
+        .experience-journey-panel,
+        .experience-timeline-card {
+          background: #111c2d;
+        }
+
+        .experience-journey-list {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .experience-journey-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          padding: 12px;
+          border-radius: 14px;
+          background: #142238;
+          border: 1px solid rgba(96, 165, 250, 0.16);
+          transition: border-color .2s ease, background .2s ease, transform .2s ease;
+        }
+
+        .experience-journey-item:hover {
+          background: #172943;
+          border-color: rgba(96, 165, 250, 0.34);
+          transform: translateY(-1px);
+        }
+
+        .experience-journey-item-icon {
+          width: 36px;
+          height: 36px;
+          display: grid;
+          place-items: center;
+          flex: 0 0 36px;
+          border-radius: 11px;
+          color: #7dd3fc;
+          background: rgba(59, 130, 246, 0.16);
+          border: 1px solid rgba(96, 165, 250, 0.28);
+        }
+
+        .experience-journey-item-copy { min-width: 0; flex: 1; }
+        .experience-journey-item-title {
+          color: #dbeafe;
+          font-size: var(--type-body);
+          font-weight: 600;
+          line-height: 1.5;
+        }
+        .experience-journey-item-sub {
+          margin-top: 4px;
+          color: #aebed2;
+          font-size: var(--type-metadata);
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .experience-timeline-card,
+        .education-card,
+        .education-overview-card,
+        .education-quote-card,
+        .education-metric-box {
+          color: #cbd5e1;
+        }
+
+        .education-overview-header h4,
+        .education-metric-value,
+        .education-card-title { color: #dbeafe; }
+        .education-overview-copy,
+        .education-card-body,
+        .education-tag { color: #cbd5e1; }
+        .education-card-subtitle,
+        .education-metric-label,
+        .education-metric-sub { color: #9fb1c8; }
         
         @keyframes pulse {
           0%, 100% { opacity: 0.3; }
           50% { opacity: 0.6; }
-        }
-        
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        
-        .animate-float-delayed {
-          animation: float 6s ease-in-out 3s infinite;
         }
         
         @keyframes typewriter {
@@ -409,6 +1031,62 @@ export default function PortfolioPage() {
           }
         }
 
+        @media (max-width: 980px) {
+          .about-layout {
+            grid-template-columns: 1fr;
+          }
+
+          .my-approach-grid {
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+          }
+
+          .my-approach-connector {
+            display: none;
+          }
+
+          .my-approach-item {
+            width: 100%;
+            max-width: 360px;
+          }
+
+          .experience-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .education-layout {
+            grid-template-columns: 1fr;
+          }
+
+          .experience-timeline-shell {
+            padding-left: 64px;
+          }
+
+          .experience-timeline-line {
+            display: block;
+          }
+
+          .experience-timeline-item {
+            grid-template-columns: 52px minmax(0, 1fr);
+            gap: 12px;
+          }
+
+          .education-timeline {
+            padding-left: 0;
+          }
+
+          .education-timeline-item {
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+
+          .education-timeline-date {
+            min-width: 100%;
+            width: 100%;
+          }
+        }
+
         @media (max-width: 767px) {
           .portfolio-desktop-nav {
             display: none !important;
@@ -430,6 +1108,108 @@ export default function PortfolioPage() {
 
           .portfolio-mobile-nav {
             display: flex !important;
+          }
+
+          .experience-timeline-line,
+          .education-timeline-line,
+          .education-timeline-dot {
+            display: none !important;
+          }
+
+          .education-timeline-item > div:first-child {
+            min-height: 0 !important;
+            align-items: flex-start !important;
+            padding-left: 0 !important;
+          }
+
+          .education-timeline-date {
+            flex-direction: row;
+            gap: 6px;
+            width: auto !important;
+            min-width: 0 !important;
+            padding: 7px 10px;
+            transform: none;
+          }
+
+          .education-card {
+            min-height: 0;
+          }
+
+          .education-card-title {
+            white-space: normal !important;
+            overflow: visible !important;
+            overflow-wrap: anywhere;
+            text-overflow: initial;
+            font-size: var(--type-card-heading) !important;
+          }
+
+          .education-card-subtitle { font-size: 14px; line-height: 1.45; }
+          .education-card-body { font-size: 15px; line-height: 1.65; }
+          .education-tag { font-size: 12px; }
+          .education-metric-label,
+          .education-metric-sub { font-size: 12px; }
+
+          .experience-timeline-shell { padding-left: 0; }
+          .experience-timeline-item {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 0;
+            align-items: start;
+          }
+          .experience-timeline-icon { display: none; }
+          .experience-timeline-card { min-width: 0; }
+          .experience-journey-item { gap: 10px; padding: 10px; }
+          .experience-journey-item-icon { width: 34px; height: 34px; flex-basis: 34px; }
+          .experience-section-subtitle { font-size: var(--type-body) !important; }
+          .experience-description { font-size: var(--type-body) !important; line-height: var(--line-body) !important; }
+          .experience-period { font-size: var(--type-metadata) !important; flex-wrap: wrap; }
+          .experience-skill { font-size: var(--type-helper) !important; }
+        }
+
+        @media (max-width: 520px) {
+          .my-approach-icon-wrap {
+            width: 122px;
+            height: 122px;
+          }
+
+          .my-approach-number-badge {
+            width: 42px;
+            height: 42px;
+            font-size: 16px;
+          }
+
+          .my-approach-icon {
+            font-size: 38px;
+          }
+
+          .my-approach-title {
+            font-size: 1.8rem;
+            margin-top: 18px;
+          }
+
+          .my-approach-text {
+            font-size: 0.95rem;
+            max-width: 180px;
+          }
+
+          .experience-timeline-card,
+          .education-card,
+          .education-overview-card,
+          .education-quote-card,
+          .education-metric-box {
+            border-radius: 16px;
+          }
+
+          .education-card-title {
+            white-space: normal;
+          }
+
+          .experience-timeline-card {
+            padding: 14px 14px 12px;
+          }
+
+          .experience-grid,
+          .education-layout {
+            gap: 16px;
           }
         }
       `}</style>
@@ -626,7 +1406,7 @@ export default function PortfolioPage() {
                   gap: "16px",
                 }}
               >
-                <h2
+                <h2 className="portfolio-greeting"
                   style={{
                     fontSize: "18px",
                     fontWeight: "500",
@@ -636,13 +1416,13 @@ export default function PortfolioPage() {
                 >
                   Hey there, welcome!
                 </h2>
-                <h1
+                <h1 className="portfolio-page-heading"
                   style={{
-                    fontSize: "clamp(2.5rem, 7vw, 4rem)",
+                    fontSize: "clamp(2rem, 4.2vw, 3.1rem)",
                     fontWeight: "800",
-                    letterSpacing: "-0.02em",
+                    letterSpacing: "-0.03em",
                     color: "white",
-                    lineHeight: 1.2,
+                    lineHeight: 1.12,
                     margin: 0,
                   }}
                 >
@@ -651,7 +1431,7 @@ export default function PortfolioPage() {
                 <div
                   className="portfolio-typewriter-shell"
                   style={{
-                    fontSize: "clamp(1.5rem, 4vw, 2rem)",
+                    fontSize: "clamp(1.35rem, 3.2vw, 1.8rem)",
                     fontWeight: "700",
                     letterSpacing: "-0.01em",
                     lineHeight: 1.3,
@@ -759,6 +1539,10 @@ export default function PortfolioPage() {
                   padding: "16px",
                   maxWidth: "400px",
                   width: "100%",
+                  background: "transparent",
+                  border: "1px solid rgba(148, 163, 184, 0.08)",
+                  backdropFilter: "none",
+                  boxShadow: "none",
                 }}
               >
                 <div
@@ -767,7 +1551,8 @@ export default function PortfolioPage() {
                     borderRadius: "16px",
                     overflow: "hidden",
                     aspectRatio: "4/5",
-                    background: "linear-gradient(to bottom, #1e293b, #0f172a)",
+                    background: "transparent",
+                    border: "1px solid rgba(148, 163, 184, 0.08)",
                   }}
                 >
                   <img
@@ -778,22 +1563,15 @@ export default function PortfolioPage() {
                       height: "100%",
                       objectFit: "cover",
                       objectPosition: "center",
-                      transition: "transform 0.7s ease-out",
+                      transition: "none",
                       filter: "none",
                     }}
-                    onMouseEnter={(e) =>
-                      (e.target.style.transform = "scale(1.05)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.target.style.transform = "scale(1)")
-                    }
                   />
                   <div
                     style={{
                       position: "absolute",
                       inset: 0,
-                      background:
-                        "linear-gradient(to top, rgba(11, 15, 25, 0.9), transparent)",
+                      background: "transparent",
                     }}
                   />
                   <div
@@ -811,7 +1589,6 @@ export default function PortfolioPage() {
                       style={{
                         fontSize: "12px",
                         color: "#cbd5e1",
-                        fontFamily: "'Fira Code', monospace",
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
@@ -840,7 +1617,6 @@ export default function PortfolioPage() {
                 </div>
 
                 <div
-                  className="animate-float"
                   style={{
                     position: "absolute",
                     top: "-20px",
@@ -900,7 +1676,6 @@ export default function PortfolioPage() {
                 </div>
 
                 <div
-                  className="animate-float-delayed"
                   style={{
                     position: "absolute",
                     bottom: "-20px",
@@ -966,9 +1741,10 @@ export default function PortfolioPage() {
         <section
           id="about"
           style={{
-            paddingTop: "96px",
-            paddingBottom: "96px",
+            paddingTop: "82px",
+            paddingBottom: "52px",
             borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+            background: "rgba(11, 15, 25, 0.96)",
           }}
         >
           <div
@@ -978,144 +1754,455 @@ export default function PortfolioPage() {
               padding: "0 24px",
             }}
           >
-            <div style={{ textAlign: "center", marginBottom: "64px" }}>
-              <h2
-                style={{
-                  fontSize: "14px",
-                  fontWeight: "700",
-                  letterSpacing: "0.05em",
-                  color: "#6366f1",
-                  textTransform: "uppercase",
-                  margin: "0 0 8px 0",
-                }}
-              >
-                About Me
-              </h2>
-              <h3
-                style={{
-                  fontSize: "clamp(2rem, 5vw, 2.5rem)",
-                  fontWeight: "bold",
-                  color: "white",
-                  margin: "0 0 24px 0",
-                }}
-              >
-                Discover
-              </h3>
+            <div className="about-layout">
+              <div>
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    color: "#3eaaff",
+                    fontSize: "15px",
+                    fontWeight: "700",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    marginBottom: "22px",
+                  }}
+                >
+                  <span style={{ fontSize: "12px", display: "inline-block" }}>
+                    ●
+                  </span>
+                  <span>About</span>
+                </div>
+
+                <h3 className="portfolio-section-title"
+                  style={{
+                    fontSize: "clamp(2.3rem, 4vw, 3.5rem)",
+                    fontWeight: "800",
+                    letterSpacing: "-0.06em",
+                    color: "white",
+                    margin: 0,
+                    lineHeight: 1.02,
+                  }}
+                >
+                  A little about{" "}
+                  <span style={{ color: "#3eaaff" }}>how I work</span>
+                </h3>
+
+                <p
+                  style={{
+                    color: "#dfe8f7",
+                    fontSize: "22px",
+                    lineHeight: 1.55,
+                    maxWidth: "760px",
+                    margin: "24px 0 0",
+                  }}
+                >
+                  I build practical and user-friendly web applications using
+                  modern technologies. I enjoy solving real-world problems and
+                  continuously learning to create better and more efficient
+                  solutions.
+                </p>
+
+                <div style={{ marginTop: "34px" }}>
+                  <h4
+                    style={{
+                      fontSize: "clamp(2rem, 3vw, 2.8rem)",
+                      fontWeight: "800",
+                      color: "white",
+                      margin: 0,
+                      letterSpacing: "-0.06em",
+                    }}
+                  >
+                    My approach
+                  </h4>
+
+                  <div className="my-approach-grid">
+                    <div className="my-approach-connector" />
+
+                    {[
+                      {
+                        number: "01",
+                        title: "Understand",
+                        text: "I learn the problem, explore requirements and plan the right solution.",
+                        icon: "fa-file-lines",
+                        iconColor: "#8ed8ff",
+                      },
+                      {
+                        number: "02",
+                        title: "Build",
+                        text: "I develop clean, maintainable and scalable applications.",
+                        icon: "fa-code",
+                        iconColor: "#8ed8ff",
+                      },
+                      {
+                        number: "03",
+                        title: "Improve",
+                        text: "I test, optimize and keep learning to make it better.",
+                        icon: "fa-chart-line",
+                        iconColor: "#8ed8ff",
+                      },
+                    ].map((item, index) => (
+                      <div key={item.number} className="my-approach-item">
+                        <div className="my-approach-icon-wrap">
+                          <div className="my-approach-number-badge">
+                            {item.number}
+                          </div>
+
+                          <i
+                            className={`fa-solid ${item.icon} my-approach-icon`}
+                            style={{ color: item.iconColor }}
+                          />
+                        </div>
+
+                        <h5 className="my-approach-title">{item.title}</h5>
+
+                        <p className="my-approach-text">{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               <div
                 style={{
-                  width: "80px",
-                  height: "4px",
-                  background: "linear-gradient(to right, #6366f1, #06b6d4)",
-                  borderRadius: "9999px",
-                  margin: "0 auto",
+                  position: "relative",
+                  background: "rgba(11, 17, 30, 0.9)",
+                  border: "1px solid rgba(107, 160, 255, 0.35)",
+                  borderRadius: "22px",
+                  padding: "18px 18px 8px",
+                  boxShadow: "inset 0 0 0 1px rgba(59,130,246,0.08)",
                 }}
-              />
+              >
+                <div
+                  style={{
+                    fontSize: "22px",
+                    fontWeight: "800",
+                    color: "white",
+                    marginBottom: "18px",
+                    paddingBottom: "10px",
+                    borderBottom: "1px solid rgba(148,163,184,0.14)",
+                  }}
+                >
+                  At a glance
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    padding: "12px 0",
+                    borderBottom: "1px solid rgba(148,163,184,0.14)",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "54px",
+                      height: "54px",
+                      borderRadius: "14px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(59,130,246,0.12)",
+                      border: "1px solid rgba(96, 165, 250, 0.3)",
+                      fontSize: "24px",
+                    }}
+                  >
+                    💼
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#a5d6ff",
+                        marginBottom: "3px",
+                      }}
+                    >
+                      Current role
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "20px",
+                        color: "white",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Full-Stack Developer
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    padding: "18px 0 12px",
+                    borderBottom: "1px solid rgba(148,163,184,0.14)",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      color: "#dbeafe",
+                      fontSize: "20px",
+                      fontWeight: "700",
+                      marginBottom: "12px",
+                    }}
+                  >
+                    <span style={{ fontSize: "20px" }}>🗓️</span>
+                    <span>Experience</span>
+                  </div>
+
+                  <div style={{ position: "relative", paddingLeft: "18px" }}>
+                    <div
+                      style={{
+                        position: "absolute",
+                        left: "6px",
+                        top: "12px",
+                        bottom: "12px",
+                        width: "2px",
+                        background: "rgba(59,130,246,0.35)",
+                      }}
+                    />
+
+                    <div style={{ position: "relative", marginBottom: "18px" }}>
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "-18px",
+                          top: "8px",
+                          width: "10px",
+                          height: "10px",
+                          borderRadius: "50%",
+                          background: "#3eaaff",
+                          boxShadow: "0 0 0 4px rgba(59,130,246,0.18)",
+                        }}
+                      />
+                      <div
+                        style={{
+                          fontSize: "15px",
+                          fontWeight: "700",
+                          color: "white",
+                        }}
+                      >
+                        ThinkNext
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "14px",
+                          color: "#dbeafe",
+                          marginTop: "4px",
+                        }}
+                      >
+                        Software Engineer Intern
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "13px",
+                          color: "#b8c5dc",
+                          marginTop: "2px",
+                        }}
+                      >
+                        Jan 2025 – Sep 2025
+                      </div>
+                    </div>
+
+                    <div style={{ position: "relative" }}>
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "-18px",
+                          top: "8px",
+                          width: "10px",
+                          height: "10px",
+                          borderRadius: "50%",
+                          background: "#3eaaff",
+                          boxShadow: "0 0 0 4px rgba(59,130,246,0.18)",
+                        }}
+                      />
+                      <div
+                        style={{
+                          fontSize: "15px",
+                          fontWeight: "700",
+                          color: "white",
+                        }}
+                      >
+                        Binary Data
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "14px",
+                          color: "#dbeafe",
+                          marginTop: "4px",
+                        }}
+                      >
+                        Full-Stack Developer
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "13px",
+                          color: "#b8c5dc",
+                          marginTop: "2px",
+                        }}
+                      >
+                        Dec 2025 – Present
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    padding: "18px 0 12px",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "54px",
+                      height: "54px",
+                      borderRadius: "14px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(59,130,246,0.12)",
+                      border: "1px solid rgba(96, 165, 250, 0.3)",
+                      fontSize: "24px",
+                    }}
+                  >
+                    🎓
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        fontSize: "18px",
+                        fontWeight: "700",
+                        color: "white",
+                        marginBottom: "4px",
+                      }}
+                    >
+                      Education
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "15px",
+                        color: "#dbeafe",
+                        fontWeight: "600",
+                      }}
+                    >
+                      B.Tech in Computer Science
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "#b8c5dc",
+                        marginTop: "2px",
+                      }}
+                    >
+                      Chandigarh Group of Colleges
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "32px",
+                gridTemplateColumns: "1.25fr 1fr 1fr",
+                gap: "18px",
+                marginTop: "38px",
               }}
             >
-              <div
-                className="glass-card"
-                style={{
-                  padding: "32px",
-                  borderRadius: "24px",
-                }}
-              >
-                <h4
+              {[
+                {
+                  value: "10+",
+                  label: "Projects",
+                  sub: "Built and deployed web applications",
+                  icon: "◫",
+                },
+                {
+                  value: "Laravel • PHP • React • Node.js",
+                  label: "",
+                  sub: "",
+                  icon: "🧩",
+                  centered: true,
+                },
+                {
+                  value: "Always learning",
+                  label: "",
+                  sub: "Exploring new tools and improving my skills",
+                  icon: "📊",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
                   style={{
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    color: "white",
-                    marginBottom: "16px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
+                    background: "rgba(15, 23, 42, 0.58)",
+                    border: "1px solid rgba(148, 163, 184, 0.18)",
+                    borderRadius: "18px",
+                    padding: "18px 18px",
+                    minHeight: "84px",
                   }}
                 >
-                  Full Stack Developer
-                </h4>
-                <p
-                  style={{
-                    fontSize: "16px",
-                    color: "#cbd5e1",
-                    lineHeight: 1.7,
-                    margin: "0 0 16px 0",
-                  }}
-                >
-                  I'm passionate about crafting robust, scalable web
-                  applications and delivering exceptional user experiences
-                  through clean, efficient code.
-                </p>
-                <p
-                  style={{
-                    fontSize: "16px",
-                    color: "#cbd5e1",
-                    lineHeight: 1.7,
-                    margin: 0,
-                  }}
-                >
-                  With expertise in both frontend and backend development, I
-                  create complete solutions that combine beautiful design with
-                  powerful functionality.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "16px",
-                }}
-              >
-                {[
-                  { label: "5+", value: "Projects Built", icon: "🎯" },
-                  { label: "1+", value: "Years Experience", icon: "⚡" },
-                  { label: "3+", value: "Tech Stacks", icon: "💻" },
-                ].map((stat) => (
                   <div
-                    key={stat.label}
-                    className="glass-card"
                     style={{
-                      padding: "20px",
+                      width: "44px",
+                      height: "44px",
                       borderRadius: "12px",
+                      background: "rgba(59,130,246,0.12)",
+                      border: "1px solid rgba(96, 165, 250, 0.28)",
                       display: "flex",
                       alignItems: "center",
-                      gap: "16px",
+                      justifyContent: "center",
+                      fontSize: "18px",
                     }}
                   >
+                    {item.icon}
+                  </div>
+
+                  <div style={{ flex: 1 }}>
                     <div
                       style={{
-                        fontSize: "28px",
+                        fontSize: item.centered ? "15px" : "20px",
+                        color: "white",
+                        fontWeight: "800",
+                        lineHeight: 1.2,
                       }}
                     >
-                      {stat.icon}
+                      {item.value}
                     </div>
-                    <div>
-                      <p
+                    {item.label ? (
+                      <div
                         style={{
-                          fontSize: "18px",
-                          fontWeight: "bold",
-                          color: "#6366f1",
-                          margin: 0,
-                        }}
-                      >
-                        {stat.label}
-                      </p>
-                      <p
-                        style={{
-                          fontSize: "13px",
+                          fontSize: "12px",
                           color: "#cbd5e1",
-                          margin: "4px 0 0 0",
+                          marginTop: "4px",
                         }}
                       >
-                        {stat.value}
-                      </p>
-                    </div>
+                        {item.label}
+                      </div>
+                    ) : null}
+                    {item.sub ? (
+                      <div
+                        style={{
+                          fontSize: "12px",
+                          color: "#cbd5e1",
+                          marginTop: "4px",
+                        }}
+                      >
+                        {item.sub}
+                      </div>
+                    ) : null}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -1123,10 +2210,10 @@ export default function PortfolioPage() {
         <section
           id="experience"
           style={{
-            paddingTop: "96px",
-            paddingBottom: "96px",
+            paddingTop: "84px",
+            paddingBottom: "100px",
             borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-            background: "rgba(255, 255, 255, 0.01)",
+            background: "rgba(7, 12, 20, 0.96)",
           }}
         >
           <div
@@ -1136,307 +2223,654 @@ export default function PortfolioPage() {
               padding: "0 24px",
             }}
           >
-            <div style={{ textAlign: "center", marginBottom: "64px" }}>
-              <h2
-                style={{
-                  fontSize: "14px",
-                  fontWeight: "700",
-                  letterSpacing: "0.05em",
-                  color: "#6366f1",
-                  textTransform: "uppercase",
-                  margin: "0 0 8px 0",
-                }}
-              >
-                Journey
-              </h2>
-              <h3
-                style={{
-                  fontSize: "clamp(2rem, 5vw, 2.5rem)",
-                  fontWeight: "bold",
-                  color: "white",
-                  margin: "0 0 24px 0",
-                }}
-              >
-                Experience & Education
-              </h3>
+            <div style={{ textAlign: "center", marginBottom: "42px" }}>
               <div
                 style={{
-                  width: "80px",
-                  height: "4px",
-                  background: "linear-gradient(to right, #6366f1, #06b6d4)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  padding: "10px 18px",
                   borderRadius: "9999px",
-                  margin: "0 auto",
+                  border: "1px solid rgba(96, 165, 250, 0.6)",
+                  background: "rgba(15, 23, 42, 0.7)",
+                  color: "#dbeafe",
+                  marginBottom: "22px",
+                  fontSize: "14px",
+                  fontWeight: "700",
                 }}
-              />
+              >
+                <i
+                  className="fa-solid fa-briefcase"
+                  style={{ color: "#7dd3fc" }}
+                />
+                <span>Work Experience</span>
+              </div>
+
+              <h3 className="portfolio-section-title"
+                style={{
+                  fontSize: "clamp(2.2rem, 3.5vw, 3.2rem)",
+                  fontWeight: "800",
+                  letterSpacing: "-0.06em",
+                  color: "white",
+                  margin: 0,
+                  lineHeight: 1.06,
+                }}
+              >
+                My Work <span style={{ color: "#60a5fa" }}>Experience</span>
+              </h3>
+
+              <p
+                className="experience-section-subtitle"
+                style={{
+                  maxWidth: "760px",
+                  margin: "18px auto 0",
+                  color: "#cbd5e1",
+                  fontSize: "18px",
+                  lineHeight: 1.5,
+                  fontWeight: 400,
+                }}
+              >
+                Here are the key professional experiences that have shaped my
+                skills and helped me grow as a developer.
+              </p>
             </div>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                gap: "48px",
-              }}
-            >
-              <div>
-                <h4
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: "700",
-                    color: "white",
-                    marginBottom: "32px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <i
-                    className="fa-solid fa-briefcase"
-                    style={{ color: "#6366f1" }}
-                  />
-                  Experience
-                </h4>
+            <div className="experience-grid">
+              <div
+                className="experience-journey-panel"
+                style={{
+                  padding: "20px 18px 16px",
+                }}
+              >
                 <div
                   style={{
                     display: "flex",
-                    flexDirection: "column",
-                    gap: "24px",
-                    position: "relative",
-                    paddingLeft: "24px",
+                    alignItems: "center",
+                    gap: "12px",
+                    marginBottom: "18px",
                   }}
                 >
                   <div
                     style={{
-                      position: "absolute",
-                      left: "5px",
-                      top: "0",
-                      bottom: "0",
-                      width: "2px",
+                      width: "34px",
+                      height: "34px",
+                      borderRadius: "10px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                       background:
-                        "linear-gradient(to bottom, #6366f1 0%, #6366f1 60%, transparent)",
-                      borderRadius: "9999px",
+                        "linear-gradient(135deg, rgba(59,130,246,0.2), rgba(14,116,144,0.2))",
+                      border: "1px solid rgba(125, 211, 252, 0.5)",
+                      color: "#7dd3fc",
                     }}
-                  />
-                  {experience.map((exp, idx) => (
-                    <div key={exp.company} style={{ position: "relative" }}>
+                  >
+                    <i
+                      className="fa-solid fa-briefcase"
+                      style={{ fontSize: 14 }}
+                    />
+                  </div>
+                  <h4
+                    style={{
+                      fontSize: "28px",
+                      fontWeight: "800",
+                      color: "white",
+                      margin: 0,
+                      letterSpacing: "-0.04em",
+                    }}
+                  >
+                    My Growth Journey
+                  </h4>
+                </div>
+
+                <div
+                  className="experience-journey-list"
+                >
+                  {[
+                    {
+                      icon: "fa-file-lines",
+                      title:
+                        "I started my professional journey as a Software Engineer Intern at ThinkNext, where I gained hands-on experience in web development.",
+                    },
+                    {
+                      icon: "fa-rocket",
+                      title: "Real Projects",
+                      sub: "Worked on live applications and real client requirements.",
+                    },
+                    {
+                      icon: "fa-chart-column",
+                      title: "Continuous Learning",
+                      sub: "Explored new technologies and improved my skills.",
+                    },
+                    {
+                      icon: "fa-people-group",
+                      title: "Team Collaboration",
+                      sub: "Worked with cross-functional teams to deliver solutions.",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.title}
+                      className="experience-journey-item"
+                    >
+                      <div className="experience-journey-item-icon">
+                        <i
+                          className={`fa-solid ${item.icon}`}
+                          style={{ fontSize: 16 }}
+                        />
+                      </div>
+
+                      <div className="experience-journey-item-copy">
+                        <div className="experience-journey-item-title">
+                          {item.title}
+                        </div>
+                        {item.sub ? (
+                          <div className="experience-journey-item-sub">
+                            {item.sub}
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div
+                  style={{
+                    marginTop: "20px",
+                    paddingTop: "14px",
+                    borderTop: "1px solid rgba(148,163,184,0.12)",
+                    fontSize: "18px",
+                    lineHeight: 1.45,
+                    color: "#cbd5e1",
+                    fontWeight: "500",
+                    fontStyle: "italic",
+                  }}
+                >
+                  <span style={{ fontSize: "26px", color: "#7dd3fc" }}>“</span>I
+                  believe in learning by building, solving real problems, and
+                  continuously improving.
+                </div>
+              </div>
+
+              <div className="experience-timeline-shell">
+                <div className="experience-timeline-line" />
+
+                {experience.map((exp, idx) => {
+                  const isThinkNext = exp.company === "ThinkNext";
+                  const isBlue = isThinkNext;
+
+                  return (
+                    <div
+                      key={exp.company}
+                      className="experience-timeline-item"
+                      style={{
+                        marginBottom:
+                          idx === experience.length - 1 ? 0 : "18px",
+                      }}
+                    >
+                      <div className="experience-timeline-icon" aria-hidden="true">
+                        {exp.icon}
+                      </div>
+
                       <div
+                        className="experience-timeline-card"
                         style={{
-                          position: "absolute",
-                          left: "-30px",
-                          top: "2px",
-                          width: "14px",
-                          height: "14px",
-                          borderRadius: "50%",
-                          background: "#6366f1",
-                          border: "3px solid rgba(11, 15, 25, 1)",
-                          zIndex: 10,
-                        }}
-                      />
-                      <div
-                        className="glass-card"
-                        style={{
-                          padding: "20px",
-                          borderRadius: "12px",
+                          padding: "16px 16px 14px",
                         }}
                       >
                         <div
                           style={{
                             display: "flex",
+                            alignItems: "center",
                             justifyContent: "space-between",
-                            alignItems: "start",
-                            marginBottom: "6px",
+                            gap: "12px",
+                            marginBottom: "10px",
                           }}
                         >
-                          <h5
+                          <div
                             style={{
-                              fontSize: "14px",
-                              fontWeight: "700",
-                              color: "white",
-                              margin: 0,
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "10px",
+                              minWidth: 0,
+                              flex: 1,
                             }}
                           >
-                            {exp.title}
-                          </h5>
-                          <span
+                            <div
+                              style={{
+                                width: "42px",
+                                height: "42px",
+                                borderRadius: "12px",
+                                background: isBlue
+                                  ? "linear-gradient(135deg, #ffe4e6, #fecaca)"
+                                  : "linear-gradient(135deg, #dcfce7, #bbf7d0)",
+                                border: "1px solid rgba(148,163,184,0.12)",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontWeight: 800,
+                                color: isBlue ? "#b91c1c" : "#166534",
+                                fontSize: "16px",
+                              }}
+                            >
+                              {exp.logo}
+                            </div>
+
+                            <div style={{ minWidth: 0, flex: 1 }}>
+                              <div
+                                className="experience-company"
+                                style={{
+                                  fontSize: "18px",
+                                  fontWeight: "800",
+                                  color: "#dbeafe",
+                                  lineHeight: 1.2,
+                                  whiteSpace: "nowrap",
+                                  overflow: "hidden",
+                                  textOverflow: "ellipsis",
+                                }}
+                              >
+                                {exp.company}
+                              </div>
+                              <div
+                                className="experience-role"
+                                style={{
+                                  fontSize: "14px",
+                                  color: "#cbd5e1",
+                                  marginTop: "2px",
+                                }}
+                              >
+                                {exp.title}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div
+                            className="experience-status"
                             style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: "6px 10px",
+                              borderRadius: "8px",
+                              background: isBlue
+                                ? "rgba(248,113,113,0.12)"
+                                : "rgba(16,185,129,0.12)",
+                              border: `1px solid ${isBlue ? "rgba(248,113,113,0.28)" : "rgba(16,185,129,0.3)"}`,
+                              color: isBlue ? "#fecaca" : "#d1fae5",
                               fontSize: "11px",
-                              fontWeight: "600",
-                              padding: "2px 8px",
-                              borderRadius: "12px",
-                              background: "#6366f1/20",
-                              color: "#a5d6ff",
+                              fontWeight: "700",
                               whiteSpace: "nowrap",
                             }}
                           >
-                            {exp.period.split("–")[1]?.trim()}
-                          </span>
+                            {exp.status}
+                          </div>
                         </div>
-                        <p
-                          style={{
-                            fontSize: "12px",
-                            color: "#06b6d4",
-                            margin: "0 0 8px 0",
-                            fontWeight: "600",
-                          }}
-                        >
-                          {exp.company}
-                        </p>
-                        <p
-                          style={{
-                            fontSize: "13px",
-                            color: "#cbd5e1",
-                            lineHeight: 1.5,
-                            margin: "0 0 12px 0",
-                          }}
-                        >
-                          {exp.description}
-                        </p>
+
                         <div
+                          className="experience-period"
                           style={{
                             display: "flex",
-                            flexWrap: "wrap",
-                            gap: "6px",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            gap: "12px",
+                            marginBottom: "10px",
+                            color: "#9fb1c8",
+                            fontSize: "12px",
+                            fontWeight: "700",
                           }}
                         >
-                          {["React", "Backend", "REST APIs"].map((skill) => (
-                            <span
-                              key={skill}
-                              style={{
-                                fontSize: "11px",
-                                padding: "3px 8px",
-                                borderRadius: "6px",
-                                background: "rgba(99, 102, 241, 0.15)",
-                                color: "#a5d6ff",
-                                border: "1px solid rgba(99, 102, 241, 0.2)",
-                              }}
-                            >
-                              {skill}
+                          <span>{exp.period.split(" – ")[0].replace("January", "Jan").replace("December", "Dec")}</span>
+                          <span>{exp.period.includes("Present") ? "Present" : exp.period.split(" – ")[1] || ""}</span>
+                        </div>
+
+                        <ul
+                          className="experience-description"
+                          style={{
+                            margin: "0 0 12px",
+                            paddingLeft: "18px",
+                            color: "#dbeafe",
+                            fontSize: "14px",
+                            lineHeight: 1.6,
+                          }}
+                        >
+                          {exp.description
+                            .split(". ")
+                            .filter(Boolean)
+                            .map((sentence) => (
+                              <li
+                                key={sentence}
+                                style={{ marginBottom: "4px" }}
+                              >
+                                {sentence.trim()}.
+                              </li>
+                            ))}
+                        </ul>
+
+                        <div>
+                          <div
+                            style={{
+                              fontSize: "12px",
+                              color: "#e2e8f0",
+                              fontWeight: "700",
+                              marginBottom: "8px",
+                              textTransform: "uppercase",
+                              letterSpacing: "0.05em",
+                            }}
+                          >
+                            Technologies
+                          </div>
+
+                          <div
+                            style={{
+                              display: "flex",
+                              flexWrap: "wrap",
+                              gap: "6px",
+                            }}
+                          >
+                            {exp.skills.map((skill) => (
+                              <span
+                                className="experience-skill"
+                                key={skill}
+                                style={{
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  padding: "5px 9px",
+                                  borderRadius: "8px",
+                                  background: "rgba(148,163,184,0.08)",
+                                  border: "1px solid rgba(148,163,184,0.12)",
+                                  color: "#dbeafe",
+                                  fontSize: "11px",
+                                  fontWeight: "600",
+                                }}
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="education" className="education-section">
+          <div className="education-shell">
+            <div className="education-header">
+              <div className="education-badge">
+                <i
+                  className="fa-solid fa-graduation-cap"
+                  style={{ color: "#7dd3fc" }}
+                />
+                <span>Education</span>
+              </div>
+
+              <h3 className="education-title portfolio-section-title">
+                My <span>Education</span> Journey
+              </h3>
+
+              <p className="education-subtitle">
+                My academic journey has given me a strong foundation in computer
+                science and problem solving, which helped me build my career in
+                web development.
+              </p>
+            </div>
+
+            <div className="education-layout">
+              <div className="education-left-panel">
+                <div className="education-overview-card">
+                  <div className="education-overview-header">
+                    <div className="education-overview-icon">
+                      <i className="fa-solid fa-book" />
+                    </div>
+                    <h4>Building a Strong Foundation</h4>
+                  </div>
+
+                  <p className="education-overview-copy">
+                    My educational journey has helped me develop a solid
+                    understanding of computer science concepts and practical
+                    skills. From learning core fundamentals in 10th and Diploma to
+                    advanced technologies in B.Tech, every step has contributed to
+                    my growth as a developer.
+                  </p>
+
+                  <div className="education-grid-metrics">
+                    <div className="education-metric-box">
+                      <div
+                        className="education-metric-icon"
+                        style={{ background: "rgba(96,165,250,0.18)" }}
+                      >
+                        <i className="fa-solid fa-book-open" />
+                      </div>
+                      <div>
+                        <div className="education-metric-value">3</div>
+                        <div className="education-metric-label">
+                          Academic Milestones
+                        </div>
+                        <div className="education-metric-sub">
+                          10th → Diploma → B.Tech
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="education-metric-box">
+                      <div
+                        className="education-metric-icon"
+                        style={{ background: "rgba(251,191,36,0.18)" }}
+                      >
+                        <i className="fa-solid fa-trophy" />
+                      </div>
+                      <div>
+                        <div className="education-metric-value">
+                          Computer Science
+                        </div>
+                        <div className="education-metric-sub">
+                          Focused on technology and problem solving
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="education-metric-box">
+                      <div
+                        className="education-metric-icon"
+                        style={{ background: "rgba(16,185,129,0.18)" }}
+                      >
+                        <i className="fa-solid fa-chart-line" />
+                      </div>
+                      <div>
+                        <div className="education-metric-value">
+                          Practical Learning
+                        </div>
+                        <div className="education-metric-sub">
+                          Built strong technical and analytical skills
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="education-metric-box">
+                      <div
+                        className="education-metric-icon"
+                        style={{ background: "rgba(168,85,247,0.18)" }}
+                      >
+                        <i className="fa-solid fa-users" />
+                      </div>
+                      <div>
+                        <div className="education-metric-value">
+                          Career Preparation
+                        </div>
+                        <div className="education-metric-sub">
+                          Education that shaped my development career
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="education-quote-card">
+                  <span style={{ fontSize: "26px", color: "#7dd3fc" }}>“</span>
+                  Education is the foundation that gave me the knowledge and
+                  confidence to build real-world solutions.
+                </div>
+              </div>
+
+              <div className="education-timeline">
+                <div className="education-timeline-line" />
+
+                {[
+                  {
+                    year: "2018 - 2019",
+                    duration: "1 Year",
+                    title: "Matriculation (10th)",
+                    subtitle: "BSEB Board",
+                    description:
+                      "Completed my 10th from BSEB Board with a focus on building a strong academic foundation.",
+                    color: "#60a5fa",
+                    tagColor: "rgba(96,165,250,0.12)",
+                    tagBorder: "rgba(96,165,250,0.25)",
+                    iconBg: "linear-gradient(135deg, #dbeafe, #bfdbfe)",
+                    iconText: "#0f172a",
+                    tagText: "#dbeafe",
+                    focus: [
+                      "General Education",
+                      "Basic Computer Knowledge",
+                      "Analytical Thinking",
+                    ],
+                    icon: "☰",
+                    label: "10th",
+                  },
+                  {
+                    year: "2019 - 2022",
+                    duration: "3 Years",
+                    title: "Diploma in Computer Science Engineering",
+                    subtitle: "Sri Sukhmani Polytechnic",
+                    description:
+                      "Completed my diploma in CSE, where I gained fundamental knowledge in programming, web technologies and software development.",
+                    color: "#34d399",
+                    tagColor: "rgba(16,185,129,0.12)",
+                    tagBorder: "rgba(16,185,129,0.28)",
+                    iconBg: "linear-gradient(135deg, #d1fae5, #bbf7d0)",
+                    iconText: "#166534",
+                    tagText: "#d1fae5",
+                    focus: [
+                      "Programming Basics",
+                      "Web Development",
+                      "Database Fundamentals",
+                    ],
+                    icon: "⚙",
+                    label: "Diploma",
+                  },
+                  {
+                    year: "2022 - 2025",
+                    duration: "3 Years",
+                    title: "B.Tech in Computer Science Engineering",
+                    subtitle: "Chandigarh Group of Colleges, Landran",
+                    description:
+                      "Completed my B.Tech in CSE, where I enhanced my technical skills, worked on real-world projects, and gained deeper knowledge in software development.",
+                    color: "#a78bfa",
+                    tagColor: "rgba(168,85,247,0.12)",
+                    tagBorder: "rgba(168,85,247,0.28)",
+                    iconBg: "linear-gradient(135deg, #ede9fe, #ddd6fe)",
+                    iconText: "#4c1d95",
+                    tagText: "#e9d5ff",
+                    focus: [
+                      "Advanced Programming",
+                      "Software Development",
+                      "Modern Technologies",
+                    ],
+                    icon: "✦",
+                    label: "B.Tech",
+                  },
+                ].map((item) => (
+                  <div key={item.title} className="education-timeline-item">
+                    <div
+                      style={{
+                        position: "relative",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        minHeight: "100px",
+                        textAlign: "center",
+                        paddingLeft: "6px",
+                      }}
+                    >
+                      <div
+                        className="education-timeline-dot"
+                        style={{
+                          background: item.color,
+                          boxShadow: `0 0 0 6px ${item.tagColor}`,
+                        }}
+                      />
+                      <div
+                        className="education-timeline-date"
+                        style={{
+                          background: item.tagColor,
+                          borderColor: item.tagBorder,
+                          color: item.tagText,
+                          boxShadow: `0 10px 24px ${item.tagColor}, inset 0 0 0 1px rgba(255,255,255,0.04)`,
+                        }}
+                      >
+                        <span>{item.year.split(" - ")[0]}</span>
+                        <span style={{ opacity: 0.9 }}>
+                          {item.year.split(" - ")[1] || item.duration}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="education-card">
+                      <div className="education-card-top">
+                        <div className="education-card-head">
+                          <div
+                            className="education-card-icon"
+                            style={{
+                              background: item.iconBg,
+                              color: item.iconText,
+                            }}
+                          >
+                            {item.icon}
+                          </div>
+
+                          <div style={{ minWidth: 0 }}>
+                            <div className="education-card-title">
+                              {item.title}
+                            </div>
+                            <div className="education-card-subtitle">
+                              {item.subtitle}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          className="education-card-badge"
+                          style={{
+                            background: item.tagColor,
+                            border: `1px solid ${item.tagBorder}`,
+                            color: item.tagText,
+                          }}
+                        >
+                          {item.label}
+                        </div>
+                      </div>
+
+                      <div className="education-card-body">
+                        {item.description}
+                      </div>
+
+                      <div>
+                        <div className="education-card-focus">Key Focus</div>
+                        <div className="education-tag-wrap">
+                          {item.focus.map((focusItem) => (
+                            <span key={focusItem} className="education-tag">
+                              {focusItem}
                             </span>
                           ))}
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h4
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: "700",
-                    color: "white",
-                    marginBottom: "32px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <i
-                    className="fa-solid fa-graduation-cap"
-                    style={{ color: "#06b6d4" }}
-                  />
-                  Education
-                </h4>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "24px",
-                    position: "relative",
-                    paddingLeft: "24px",
-                  }}
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: "5px",
-                      top: "0",
-                      bottom: "0",
-                      width: "2px",
-                      background:
-                        "linear-gradient(to bottom, #06b6d4 0%, #06b6d4 60%, transparent)",
-                      borderRadius: "9999px",
-                    }}
-                  />
-                  {education.map((edu) => (
-                    <div key={edu.title} style={{ position: "relative" }}>
-                      <div
-                        style={{
-                          position: "absolute",
-                          left: "-30px",
-                          top: "2px",
-                          width: "14px",
-                          height: "14px",
-                          borderRadius: "50%",
-                          background: "#06b6d4",
-                          border: "3px solid rgba(11, 15, 25, 1)",
-                          zIndex: 10,
-                        }}
-                      />
-                      <div
-                        className="glass-card"
-                        style={{
-                          padding: "20px",
-                          borderRadius: "12px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "start",
-                            marginBottom: "6px",
-                          }}
-                        >
-                          <h5
-                            style={{
-                              fontSize: "14px",
-                              fontWeight: "700",
-                              color: "white",
-                              margin: 0,
-                            }}
-                          >
-                            {edu.title}
-                          </h5>
-                          <span
-                            style={{
-                              fontSize: "11px",
-                              fontWeight: "600",
-                              padding: "2px 8px",
-                              borderRadius: "12px",
-                              background: "#06b6d4/20",
-                              color: "#a5f3fc",
-                              whiteSpace: "nowrap",
-                            }}
-                          >
-                            {edu.period}
-                          </span>
-                        </div>
-                        <p
-                          style={{
-                            fontSize: "12px",
-                            color: "#06b6d4",
-                            margin: "0 0 8px 0",
-                            fontWeight: "600",
-                          }}
-                        >
-                          {edu.institution}
-                        </p>
-                        <p
-                          style={{
-                            fontSize: "13px",
-                            color: "#cbd5e1",
-                            lineHeight: 1.5,
-                            margin: 0,
-                          }}
-                        >
-                          Focused on computer science fundamentals, algorithms,
-                          and web technologies.
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -1470,9 +2904,9 @@ export default function PortfolioPage() {
               >
                 Expertise
               </h2>
-              <h3
+              <h3 className="portfolio-section-title"
                 style={{
-                  fontSize: "clamp(2rem, 5vw, 2.5rem)",
+                  fontSize: "clamp(1.7rem, 3vw, 2.2rem)",
                   fontWeight: "bold",
                   color: "white",
                   margin: "0 0 24px 0",
@@ -1618,9 +3052,9 @@ export default function PortfolioPage() {
               >
                 MY AI TOOLS
               </div>
-              <h3
+              <h3 className="portfolio-section-title"
                 style={{
-                  fontSize: "clamp(2rem, 5vw, 2.5rem)",
+                  fontSize: "clamp(1.7rem, 3vw, 2.2rem)",
                   fontWeight: "bold",
                   color: "white",
                   margin: "0 0 24px 0",
@@ -1766,9 +3200,9 @@ export default function PortfolioPage() {
               >
                 Portfolio
               </h2>
-              <h3
+              <h3 className="portfolio-section-title"
                 style={{
-                  fontSize: "clamp(1.9rem, 4vw, 2.7rem)",
+                  fontSize: "clamp(1.8rem, 3vw, 2.4rem)",
                   fontWeight: "bold",
                   color: "white",
                   margin: "0 0 18px 0",
@@ -2068,7 +3502,7 @@ export default function PortfolioPage() {
               >
                 Get in Touch
               </h2>
-              <h3
+              <h3 className="portfolio-section-title"
                 style={{
                   fontSize: "clamp(2rem, 5vw, 2.5rem)",
                   fontWeight: "bold",
@@ -2208,7 +3642,6 @@ export default function PortfolioPage() {
                         border: "1px solid rgba(255, 255, 255, 0.1)",
                         color: "white",
                         fontSize: "14px",
-                        fontFamily: "'Inter', sans-serif",
                         boxSizing: "border-box",
                         resize: "none",
                         transition: "all 0.3s",

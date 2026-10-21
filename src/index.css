@@ -1,11 +1,18 @@
 :root {
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  --font-family-base: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --type-page-heading: 30px;
+  --type-section-heading: 26px;
+  --type-card-heading: 19px;
+  --type-subheading: 16px;
+  --type-organization: 15px;
+  --type-body: 15px;
+  --type-label: 14px;
+  --type-metadata: 13px;
+  --type-helper: 12px;
+  --line-heading: 1.2;
+  --line-body: 1.6;
+  --letter-heading: -0.035em;
+  font-family: var(--font-family-base);
   line-height: 1.5;
   font-weight: 400;
   color: #e2e8f0;
@@ -29,6 +36,74 @@ body {
 
 * {
   box-sizing: border-box;
+  font-family: var(--font-family-base);
+}
+
+h1,
+.portfolio-page-heading {
+  font-size: var(--type-page-heading);
+  font-weight: 700;
+  line-height: var(--line-heading);
+  letter-spacing: var(--letter-heading);
+}
+
+h3,
+.portfolio-section-title {
+  font-size: var(--type-section-heading);
+  font-weight: 700;
+  line-height: var(--line-heading);
+  letter-spacing: var(--letter-heading);
+}
+
+h4,
+h5,
+.education-card-title {
+  font-size: var(--type-card-heading);
+  font-weight: 700;
+  line-height: var(--line-heading);
+}
+
+p {
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: var(--line-body);
+}
+
+button,
+label {
+  font-size: var(--type-label);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  :root {
+    --type-page-heading: 27px;
+    --type-section-heading: 24px;
+    --type-card-heading: 18px;
+    --type-subheading: 16px;
+    --type-organization: 15px;
+    --type-body: 14px;
+    --type-metadata: 13px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --type-page-heading: 24px;
+    --type-section-heading: 21px;
+    --type-card-heading: 17px;
+    --type-subheading: 15px;
+    --type-organization: 14px;
+    --type-body: 14px;
+    --type-metadata: 12px;
+  }
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 img {
