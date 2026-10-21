@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import profileImage from "./assets/profile-image.jpeg";
 
 const portfolioNav = [
   { label: "Home", href: "#home" },
@@ -770,7 +771,7 @@ export default function PortfolioPage() {
                   }}
                 >
                   <img
-                    src="/src/assets/profile-image.jpeg"
+                    src={profileImage}
                     alt="Manish Kumar"
                     style={{
                       width: "100%",
