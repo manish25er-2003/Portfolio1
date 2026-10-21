@@ -42,7 +42,7 @@ body {
 h1,
 .portfolio-page-heading {
   font-size: var(--type-page-heading);
-  font-weight: 700;
+  font-weight: 800 !important;
   line-height: var(--line-heading);
   letter-spacing: var(--letter-heading);
 }
@@ -50,7 +50,7 @@ h1,
 h3,
 .portfolio-section-title {
   font-size: var(--type-section-heading);
-  font-weight: 700;
+  font-weight: 700 !important;
   line-height: var(--line-heading);
   letter-spacing: var(--letter-heading);
 }
@@ -59,9 +59,12 @@ h4,
 h5,
 .education-card-title {
   font-size: var(--type-card-heading);
-  font-weight: 700;
+  font-weight: 600 !important;
   line-height: var(--line-heading);
 }
+
+h2 { font-weight: 700 !important; }
+h6 { font-weight: 500 !important; }
 
 p {
   font-size: var(--type-body);

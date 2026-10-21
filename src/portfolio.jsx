@@ -485,7 +485,7 @@ export default function PortfolioPage() {
 
         .portfolio-page-heading {
           font-size: var(--type-page-heading) !important;
-          font-weight: 700 !important;
+          font-weight: 800 !important;
           line-height: var(--line-heading) !important;
           letter-spacing: var(--letter-heading) !important;
           color: #dbeafe !important;
@@ -498,14 +498,14 @@ export default function PortfolioPage() {
           letter-spacing: 0 !important;
         }
 
-        h4, h5 { font-size: var(--type-card-heading) !important; font-weight: 700 !important; line-height: var(--line-heading) !important; }
+        h4, h5 { font-size: var(--type-card-heading) !important; font-weight: 600 !important; line-height: var(--line-heading) !important; }
         p { font-size: var(--type-body) !important; font-weight: 400 !important; line-height: var(--line-body) !important; }
         button, label { font-size: var(--type-label) !important; font-weight: 600 !important; }
         input, textarea, select { font-size: var(--type-label) !important; font-weight: 400 !important; }
         .portfolio-desktop-nav a, .portfolio-mobile-nav-link { font-size: var(--type-label); font-weight: 600; }
         .experience-section-subtitle, .education-subtitle { font-size: var(--type-body) !important; line-height: var(--line-body) !important; }
         .education-overview-header h4, .experience-journey-panel h4 { font-size: var(--type-card-heading) !important; }
-        .education-card-title { font-size: var(--type-card-heading) !important; font-weight: 700 !important; line-height: var(--line-heading) !important; }
+        .education-card-title { font-size: var(--type-card-heading) !important; font-weight: 600 !important; line-height: var(--line-heading) !important; }
         .education-card-subtitle, .experience-company { font-size: var(--type-organization) !important; font-weight: 600 !important; line-height: 1.45 !important; }
         .experience-role { font-size: var(--type-subheading) !important; font-weight: 600 !important; line-height: 1.45 !important; }
         .education-card-body, .experience-description { font-size: var(--type-body) !important; font-weight: 400 !important; line-height: var(--line-body) !important; }
