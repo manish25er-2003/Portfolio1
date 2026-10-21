@@ -484,7 +484,7 @@ export default function PortfolioPage() {
         .portfolio-section-title span { color: inherit !important; }
 
         .portfolio-page-heading {
-          font-size: var(--type-page-heading) !important;
+          font-size: clamp(2.6rem, 5.6vw, 4rem) !important;
           font-weight: 800 !important;
           line-height: var(--line-heading) !important;
           letter-spacing: var(--letter-heading) !important;
@@ -496,6 +496,10 @@ export default function PortfolioPage() {
           font-weight: 600 !important;
           line-height: 1.45 !important;
           letter-spacing: 0 !important;
+        }
+
+        .portfolio-typewriter-shell {
+          font-size: clamp(1.6rem, 3.5vw, 2.2rem) !important;
         }
 
         h4, h5 { font-size: var(--type-card-heading) !important; font-weight: 800 !important; line-height: var(--line-heading) !important; }
