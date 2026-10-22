@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import profileImage from "./assets/update-image22.png";
+import bsebLogo from "./assets/education/bihar-school-examination-board.jpg";
+import sriSukhmaniLogo from "./assets/education/sri-sukhmani.png";
+import cgcLandranLogo from "./assets/education/cgc-landran.png";
 
 const portfolioNav = [
   { label: "Home", href: "#home" },
@@ -109,7 +112,7 @@ const experience = [
     period: "January 2025 – September 2025 · 9 months",
     status: "Intern",
     description:
-      "Gained hands-on experience in web application development, working on frontend interfaces and backend functionality. Assisted with implementing features, debugging issues, integrating APIs, and managing database operations while collaborating with the development team.",
+      "Built web features with PHP, Laravel, MySQL, and JavaScript.",
     icon: "💼",
     logo: "TN",
     logoBg: "linear-gradient(135deg, #0f172a, #1d4ed8)",
@@ -124,7 +127,7 @@ const experience = [
     period: "December 2025 – Present",
     status: "Current",
     description:
-      "Developing and maintaining web applications across frontend and backend systems. Working on responsive user interfaces, server-side functionality, REST API integration, database operations, and application debugging to deliver reliable and scalable solutions.",
+      "Developing full-stack interfaces, APIs, and database features.",
     icon: "⭐",
     logo: "BD",
     logoBg: "linear-gradient(135deg, #0f172a, #10b981)",
@@ -151,11 +154,11 @@ const education = [
 ];
 
 const rotatingHeroPhrases = [
-  "Full Stack Developer Engineer",
-  "Software Developer Engineer",
+  "Full-Stack Developer & AI Solutions Engineer",
+  "Building AI-powered web solutions",
 ];
 
-function TypewriterText({ phrases }) {
+function TypewriterText({ phrases, textStyle, cursorStyle }) {
   const [displayText, setDisplayText] = useState("");
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -188,8 +191,8 @@ function TypewriterText({ phrases }) {
 
   return (
     <span className="portfolio-typewriter-wrap">
-      <span className="portfolio-typewriter-text">{displayText}</span>
-      <span className="portfolio-typewriter-cursor" aria-hidden="true" />
+      <span className="portfolio-typewriter-text" style={textStyle}>{displayText}</span>
+      <span className="portfolio-typewriter-cursor" style={cursorStyle} aria-hidden="true" />
     </span>
   );
 }
@@ -444,7 +447,7 @@ export default function PortfolioPage() {
 
         .education-section {
           position: relative;
-          padding-top: 88px;
+          padding-top: 96px;
           padding-bottom: 96px;
           border-top: 1px solid rgba(255, 255, 255, 0.05);
           background: rgba(7, 12, 20, 0.96);
@@ -473,8 +476,8 @@ export default function PortfolioPage() {
         }
 
         .portfolio-section-title {
-          font-size: var(--type-section-heading) !important;
-          font-weight: 800 !important;
+          font-size: calc(var(--type-section-heading) + 2px) !important;
+          font-weight: 700 !important;
           letter-spacing: var(--letter-heading) !important;
           color: #dbeafe !important;
           line-height: var(--line-heading) !important;
@@ -484,8 +487,8 @@ export default function PortfolioPage() {
         .portfolio-section-title span { color: inherit !important; }
 
         .portfolio-page-heading {
-          font-size: clamp(2.6rem, 5.6vw, 4rem) !important;
-          font-weight: 800 !important;
+          font-size: clamp(2.75rem, 5.8vw, 4.2rem) !important;
+          font-weight: 700 !important;
           line-height: var(--line-heading) !important;
           letter-spacing: var(--letter-heading) !important;
           color: #dbeafe !important;
@@ -513,7 +516,8 @@ export default function PortfolioPage() {
         .education-card-subtitle, .experience-company { font-size: var(--type-organization) !important; font-weight: 600 !important; line-height: 1.45 !important; }
         .experience-role { font-size: var(--type-subheading) !important; font-weight: 600 !important; line-height: 1.45 !important; }
         .education-card-body, .experience-description { font-size: var(--type-body) !important; font-weight: 400 !important; line-height: var(--line-body) !important; }
-        .education-card-badge, .education-timeline-date, .experience-period { font-size: var(--type-metadata) !important; font-weight: 500 !important; }
+        .education-card-badge, .experience-period { font-size: var(--type-metadata) !important; font-weight: 500 !important; }
+        .education-timeline-date { font-size: 11px !important; font-weight: 600 !important; }
         .education-tag, .education-card-focus, .education-metric-label, .education-metric-sub { font-size: var(--type-helper) !important; font-weight: 400 !important; }
         .education-card-focus { font-size: var(--type-label) !important; font-weight: 600 !important; }
         .education-badge, .experience-status { font-size: var(--type-label) !important; font-weight: 600 !important; }
@@ -699,7 +703,7 @@ export default function PortfolioPage() {
 
         .education-timeline-line {
           position: absolute;
-          left: 17px;
+          left: 48px;
           top: 8px;
           bottom: 8px;
           width: 2px;
@@ -721,8 +725,10 @@ export default function PortfolioPage() {
         .education-timeline-dot {
           position: absolute;
           left: -18px;
-          width: 12px;
-          height: 12px;
+          top: 50%;
+          width: 9px;
+          height: 9px;
+          transform: translateY(-50%);
           border-radius: 50%;
           border: 2px solid rgba(11, 15, 25, 0.9);
           box-shadow: 0 0 0 6px rgba(96,165,250,0.12);
@@ -730,17 +736,19 @@ export default function PortfolioPage() {
 
         .education-timeline-date {
           display: inline-flex;
-          flex-direction: column;
+          flex-direction: row;
           align-items: center;
           justify-content: center;
-          min-width: 82px;
-          padding: 10px 12px;
+          min-width: 0;
+          width: max-content;
+          padding: 7px 9px;
           border-radius: 14px;
           border: 1px solid rgba(148, 163, 184, 0.18);
           font-size: 12px;
           font-weight: 800;
           line-height: 1.2;
           text-align: center;
+          white-space: nowrap;
           letter-spacing: 0.02em;
           transform: translateY(2px);
           box-shadow: 0 10px 24px rgba(15, 23, 42, 0.26);
@@ -774,6 +782,7 @@ export default function PortfolioPage() {
         .education-card-icon {
           width: 48px;
           height: 48px;
+          padding: 3px;
           border-radius: 14px;
           display: flex;
           align-items: center;
@@ -782,6 +791,13 @@ export default function PortfolioPage() {
           font-size: 18px;
           border: 1px solid rgba(148,163,184,0.12);
           flex-shrink: 0;
+        }
+
+        .education-card-icon img {
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+          object-fit: contain;
         }
 
         .education-card-title {
@@ -796,9 +812,11 @@ export default function PortfolioPage() {
 
         .education-card-subtitle {
           font-size: var(--type-organization);
-          font-weight: 600;
+          font-weight: 700;
           color: #cbd5e1;
-          margin-top: 2px;
+          margin-top: 4px;
+          line-height: 1.4;
+          overflow-wrap: anywhere;
         }
 
         .education-card-badge {
@@ -864,6 +882,18 @@ export default function PortfolioPage() {
           transition: all 0.3s ease;
         }
 
+        .experience-timeline-card {
+          min-height: 270px;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .experience-card-skills {
+          margin-top: auto;
+          padding-top: 12px;
+          border-top: 1px solid rgba(148, 163, 184, 0.14);
+        }
+
         .experience-timeline-shell {
           position: relative;
           padding-left: 64px;
@@ -872,7 +902,7 @@ export default function PortfolioPage() {
         .experience-timeline-line {
           display: block;
           position: absolute;
-          left: 25px;
+          left: 46px;
           top: 30px;
           bottom: 30px;
           width: 2px;
@@ -891,11 +921,14 @@ export default function PortfolioPage() {
 
         .experience-timeline-dot {
           position: absolute;
-          left: -18px;
-          width: 12px;
-          height: 12px;
+          left: -24px;
+          top: 50%;
+          width: 10px;
+          height: 10px;
+          transform: translateY(-50%);
           border-radius: 50%;
           border: 2px solid rgba(11, 15, 25, 0.9);
+          z-index: 1;
         }
 
         .experience-timeline-icon {
@@ -1076,22 +1109,244 @@ export default function PortfolioPage() {
             gap: 12px;
           }
 
-          .education-timeline {
-            padding-left: 0;
-          }
-
           .education-timeline-item {
             grid-template-columns: 1fr;
             gap: 12px;
           }
 
           .education-timeline-date {
-            min-width: 100%;
-            width: 100%;
+            min-width: 0;
+            width: max-content;
+            justify-self: start;
           }
         }
 
+        .hero-profile-stats { display: contents; }
+
+        .hero-graphic-backdrop {
+          position: absolute;
+          z-index: 0;
+          inset: -12% -10% -10% -18%;
+          overflow: hidden;
+          pointer-events: none;
+          border-radius: 36px;
+          background:
+            radial-gradient(ellipse at 82% 24%, rgba(0, 177, 255, .19), transparent 38%),
+            radial-gradient(ellipse at 22% 84%, rgba(0, 206, 232, .15), transparent 42%);
+        }
+
+        .hero-graphic-orbit {
+          position: absolute;
+          width: 72%;
+          aspect-ratio: 1;
+          right: -6%;
+          top: 13%;
+          border: 1px solid rgba(22, 194, 255, .62);
+          border-radius: 50%;
+          box-shadow: 0 0 30px rgba(0, 178, 255, .08), inset 0 0 35px rgba(0, 178, 255, .04);
+          animation: hero-orbit-turn 34s linear infinite;
+        }
+
+        .hero-graphic-orbit::after {
+          content: "";
+          position: absolute;
+          inset: -9%;
+          border: 1px dashed rgba(51, 159, 226, .28);
+          border-radius: 50%;
+        }
+
+        .hero-graphic-panel {
+          position: absolute;
+          width: 54%;
+          height: 43%;
+          border: 1px solid rgba(177, 228, 255, .55);
+          border-radius: 34px;
+          background: linear-gradient(135deg, rgba(164, 213, 240, .18), rgba(14, 78, 120, .08) 55%, rgba(0, 188, 236, .12));
+          box-shadow: inset 0 0 24px rgba(203, 238, 255, .09), 0 0 24px rgba(0, 191, 255, .12);
+          backdrop-filter: blur(4px);
+        }
+
+        .hero-graphic-panel-back {
+          top: 4%;
+          right: -4%;
+          transform: rotate(-5deg);
+          animation: hero-panel-float-back 7s ease-in-out infinite;
+        }
+        .hero-graphic-panel-front {
+          top: 34%;
+          right: 2%;
+          transform: rotate(5deg);
+          animation: hero-panel-float-front 8s ease-in-out infinite;
+        }
+
+        .hero-graphic-grid {
+          position: absolute;
+          inset: 0;
+          opacity: .19;
+          background-image: linear-gradient(rgba(77, 172, 220, .25) 1px, transparent 1px), linear-gradient(90deg, rgba(77, 172, 220, .25) 1px, transparent 1px);
+          background-size: 100% 25%, 25% 100%;
+          mask-image: linear-gradient(90deg, transparent, #000 65%);
+        }
+
+        .hero-graphic-dot {
+          position: absolute;
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #52dfff;
+          box-shadow: 0 0 12px #22c9ff;
+          animation: hero-dot-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes hero-orbit-turn {
+          to { rotate: 360deg; }
+        }
+
+        @keyframes hero-panel-float-back {
+          0%, 100% { translate: 0 0; }
+          50% { translate: 0 -9px; }
+        }
+
+        @keyframes hero-panel-float-front {
+          0%, 100% { translate: 0 0; }
+          50% { translate: 0 8px; }
+        }
+
+        @keyframes hero-dot-pulse {
+          0%, 100% { opacity: .55; scale: .85; }
+          50% { opacity: 1; scale: 1.2; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-graphic-orbit,
+          .hero-graphic-panel-back,
+          .hero-graphic-panel-front,
+          .hero-graphic-dot {
+            animation: none !important;
+          }
+        }
+
+        .hero-profile-card { position: relative; z-index: 1; }
+
+        .about-highlight-cards {
+          display: grid;
+          grid-template-columns: 1.25fr 1fr 1fr;
+          gap: 18px;
+          margin-top: 38px;
+        }
+
+        .about-highlight-card { min-width: 0; }
+
         @media (max-width: 767px) {
+          #experience {
+            padding-top: 64px !important;
+            padding-bottom: 64px !important;
+          }
+
+          .experience-section-title,
+          #experience .portfolio-section-title,
+          .education-title {
+            font-size: clamp(1.9rem, 8vw, 2.5rem) !important;
+            line-height: 1.12 !important;
+            letter-spacing: -0.04em !important;
+            text-wrap: balance;
+          }
+
+          #about {
+            padding-top: 64px !important;
+            padding-bottom: 64px !important;
+          }
+
+          #about > div {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+
+          .about-highlight-cards {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 12px;
+            margin-top: 24px;
+          }
+
+          .about-highlight-card {
+            min-height: 0 !important;
+            padding: 14px !important;
+            border-radius: 14px !important;
+            gap: 12px !important;
+          }
+
+          .hero-profile-shell {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .hero-graphic-backdrop {
+            inset: -7% -7% 4% -7%;
+            border-radius: 26px;
+          }
+
+          .hero-graphic-orbit { width: 82%; right: -13%; top: 11%; }
+          .hero-graphic-panel { width: 49%; height: 35%; border-radius: 25px; }
+          .hero-graphic-panel-back { top: 8%; right: -5%; }
+          .hero-graphic-panel-front { top: 37%; right: 3%; }
+
+          .hero-profile-card,
+          .hero-profile-image-frame {
+            border: 0 !important;
+          }
+
+          .hero-profile-stats {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+          }
+
+          .hero-profile-stat {
+            position: static !important;
+            inset: auto !important;
+            z-index: auto !important;
+            width: calc(50% - 5px);
+            flex: 1 1 0;
+          }
+
+          .hero-profile-stat-card {
+            height: 100%;
+            padding: 10px !important;
+            gap: 8px !important;
+            border-radius: 12px !important;
+            animation: none !important;
+            transform: none !important;
+            transition: none !important;
+          }
+
+          .hero-profile-stat-icon {
+            width: 34px !important;
+            height: 34px !important;
+            flex: 0 0 34px;
+            border-radius: 10px !important;
+            font-size: 16px !important;
+          }
+
+          .hero-profile-stat-card p:first-child { font-size: 12px !important; }
+          .hero-profile-stat-card p:last-child { font-size: 10px !important; }
+
+          .projects-grid {
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 24px !important;
+          }
+
+          .project-card-image { height: 160px !important; }
+          .project-card-content { padding: 16px 16px 18px !important; gap: 12px !important; }
+          .project-card-category { font-size: 11px !important; }
+          .project-card-title { font-size: 18px !important; }
+          .project-card-description { font-size: 14px !important; line-height: 1.55 !important; }
+          .project-card-tech span { padding: 5px 8px !important; font-size: 10px !important; }
+          .project-card-actions { display: flex !important; flex-wrap: wrap; gap: 10px !important; }
+          .project-card-action { min-width: 110px !important; width: auto; padding: 10px 12px !important; font-size: 13px !important; }
+
           .portfolio-desktop-nav {
             display: none !important;
           }
@@ -1114,10 +1369,25 @@ export default function PortfolioPage() {
             display: flex !important;
           }
 
-          .experience-timeline-line,
-          .education-timeline-line,
-          .education-timeline-dot {
-            display: none !important;
+          .education-timeline {
+            padding-left: 20px;
+          }
+
+          .education-timeline-line {
+            left: 8px;
+          }
+
+          .experience-timeline-shell {
+            padding-left: 20px;
+          }
+
+          .experience-timeline-line {
+            left: 8px;
+          }
+
+          .education-timeline-dot,
+          .experience-timeline-dot {
+            display: block !important;
           }
 
           .education-timeline-item > div:first-child {
@@ -1140,27 +1410,56 @@ export default function PortfolioPage() {
           }
 
           .education-card-title {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden !important;
             white-space: normal !important;
-            overflow: visible !important;
-            overflow-wrap: anywhere;
-            text-overflow: initial;
-            font-size: var(--type-card-heading) !important;
+            overflow-wrap: normal;
+            text-overflow: ellipsis;
+            font-size: 14px !important;
+            line-height: 1.3 !important;
           }
 
-          .education-card-subtitle { font-size: 14px; line-height: 1.45; }
+          .education-card-subtitle {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            overflow-wrap: normal;
+            font-size: 13px !important;
+            line-height: 1.35 !important;
+          }
+          .education-card-head { align-items: flex-start; }
+          .education-card-subtitle { margin-top: 5px; }
+          .education-card-top { align-items: flex-start; gap: 8px; }
+          .education-card-badge { flex-shrink: 0; padding: 6px 8px; }
           .education-card-body { font-size: 15px; line-height: 1.65; }
           .education-tag { font-size: 12px; }
           .education-metric-label,
           .education-metric-sub { font-size: 12px; }
 
-          .experience-timeline-shell { padding-left: 0; }
+          .experience-timeline-shell { padding-left: 20px; }
           .experience-timeline-item {
             grid-template-columns: minmax(0, 1fr);
             gap: 0;
             align-items: start;
           }
           .experience-timeline-icon { display: none; }
+          .experience-timeline-line { left: 8px; }
+          .experience-timeline-dot { left: -18px; }
           .experience-timeline-card { min-width: 0; }
+          .experience-company {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            font-size: 16px !important;
+            line-height: 1.3 !important;
+            white-space: normal !important;
+            overflow: hidden !important;
+            overflow-wrap: normal;
+            text-overflow: ellipsis !important;
+          }
           .experience-journey-item { gap: 10px; padding: 10px; }
           .experience-journey-item-icon { width: 34px; height: 34px; flex-basis: 34px; }
           .experience-section-subtitle { font-size: var(--type-body) !important; }
@@ -1360,7 +1659,7 @@ export default function PortfolioPage() {
             display: "flex",
             alignItems: "center",
             paddingTop: "140px",
-            paddingBottom: "80px",
+            paddingBottom: "96px",
           }}
         >
           <div
@@ -1430,7 +1729,18 @@ export default function PortfolioPage() {
                     margin: 0,
                   }}
                 >
-                  I'm Manish Kumar
+                  <span>I'm </span>
+                  <span
+                    style={{
+                      background: "linear-gradient(100deg, #e0f2fe 0%, #67e8f9 48%, #60a5fa 100%)",
+                      WebkitBackgroundClip: "text",
+                      backgroundClip: "text",
+                      color: "transparent",
+                      filter: "drop-shadow(0 0 18px rgba(34, 211, 238, .16))",
+                    }}
+                  >
+                    Manish Kumar
+                  </span>
                 </h1>
                 <div
                   className="portfolio-typewriter-shell"
@@ -1530,14 +1840,25 @@ export default function PortfolioPage() {
             </div>
 
             <div
+              className="hero-profile-shell"
               style={{
                 display: "flex",
                 justifyContent: "center",
                 position: "relative",
               }}
             >
+              <div className="hero-graphic-backdrop" aria-hidden="true">
+                <div className="hero-graphic-grid" />
+                <div className="hero-graphic-orbit" />
+                <div className="hero-graphic-panel hero-graphic-panel-back" />
+                <div className="hero-graphic-panel hero-graphic-panel-front" />
+                <span className="hero-graphic-dot" style={{ top: "18%", right: "24%" }} />
+                <span className="hero-graphic-dot" style={{ top: "43%", right: "82%" }} />
+                <span className="hero-graphic-dot" style={{ top: "71%", right: "10%" }} />
+                <span className="hero-graphic-dot" style={{ top: "88%", right: "49%", opacity: .45 }} />
+              </div>
               <div
-                className="glass-card"
+                className="glass-card hero-profile-card"
                 style={{
                   borderRadius: "24px",
                   padding: "16px",
@@ -1550,6 +1871,7 @@ export default function PortfolioPage() {
                 }}
               >
                 <div
+                  className="hero-profile-image-frame"
                   style={{
                     position: "relative",
                     borderRadius: "16px",
@@ -1620,7 +1942,9 @@ export default function PortfolioPage() {
                   </div>
                 </div>
 
+                <div className="hero-profile-stats">
                 <div
+                  className="hero-profile-stat"
                   style={{
                     position: "absolute",
                     top: "-20px",
@@ -1629,7 +1953,7 @@ export default function PortfolioPage() {
                   }}
                 >
                   <div
-                    className="glass-panel"
+                    className="glass-panel hero-profile-stat-card"
                     style={{
                       padding: "16px",
                       borderRadius: "16px",
@@ -1649,6 +1973,7 @@ export default function PortfolioPage() {
                         justifyContent: "center",
                         fontSize: "24px",
                       }}
+                      className="hero-profile-stat-icon"
                     >
                       <i
                         className="fa-solid fa-briefcase"
@@ -1680,6 +2005,7 @@ export default function PortfolioPage() {
                 </div>
 
                 <div
+                  className="hero-profile-stat"
                   style={{
                     position: "absolute",
                     bottom: "-20px",
@@ -1688,7 +2014,7 @@ export default function PortfolioPage() {
                   }}
                 >
                   <div
-                    className="glass-panel"
+                    className="glass-panel hero-profile-stat-card"
                     style={{
                       padding: "12px 16px",
                       borderRadius: "16px",
@@ -1708,6 +2034,7 @@ export default function PortfolioPage() {
                         justifyContent: "center",
                         fontSize: "18px",
                       }}
+                      className="hero-profile-stat-icon"
                     >
                       <i
                         className="fa-solid fa-circle-check"
@@ -1737,6 +2064,7 @@ export default function PortfolioPage() {
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1745,8 +2073,8 @@ export default function PortfolioPage() {
         <section
           id="about"
           style={{
-            paddingTop: "82px",
-            paddingBottom: "52px",
+            paddingTop: "96px",
+            paddingBottom: "96px",
             borderTop: "1px solid rgba(255, 255, 255, 0.05)",
             background: "rgba(11, 15, 25, 0.96)",
           }}
@@ -1932,7 +2260,7 @@ export default function PortfolioPage() {
                         fontWeight: "700",
                       }}
                     >
-                      Full-Stack Developer
+                      Full-Stack Developer & AI Solutions Engineer
                     </div>
                   </div>
                 </div>
@@ -2114,12 +2442,7 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1.25fr 1fr 1fr",
-                gap: "18px",
-                marginTop: "38px",
-              }}
+              className="about-highlight-cards"
             >
               {[
                 {
@@ -2144,6 +2467,7 @@ export default function PortfolioPage() {
               ].map((item, index) => (
                 <div
                   key={index}
+                  className="about-highlight-card"
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -2214,8 +2538,8 @@ export default function PortfolioPage() {
         <section
           id="experience"
           style={{
-            paddingTop: "84px",
-            paddingBottom: "100px",
+            paddingTop: "96px",
+            paddingBottom: "96px",
             borderTop: "1px solid rgba(255, 255, 255, 0.05)",
             background: "rgba(7, 12, 20, 0.96)",
           }}
@@ -2275,8 +2599,7 @@ export default function PortfolioPage() {
                   fontWeight: 400,
                 }}
               >
-                Here are the key professional experiences that have shaped my
-                skills and helped me grow as a developer.
+                Hands-on experience building and maintaining web applications.
               </p>
             </div>
 
@@ -2316,7 +2639,7 @@ export default function PortfolioPage() {
                   </div>
                   <h4
                     style={{
-                      fontSize: "28px",
+                      fontSize: "22px",
                       fontWeight: "800",
                       color: "white",
                       margin: 0,
@@ -2333,23 +2656,23 @@ export default function PortfolioPage() {
                   {[
                     {
                       icon: "fa-file-lines",
-                      title:
-                        "I started my professional journey as a Software Engineer Intern at ThinkNext, where I gained hands-on experience in web development.",
+                      title: "Software Engineer Intern · ThinkNext",
+                      sub: "Started my career in web development.",
                     },
                     {
                       icon: "fa-rocket",
                       title: "Real Projects",
-                      sub: "Worked on live applications and real client requirements.",
+                      sub: "Built features for live applications.",
                     },
                     {
                       icon: "fa-chart-column",
                       title: "Continuous Learning",
-                      sub: "Explored new technologies and improved my skills.",
+                      sub: "Expanded my skills in modern web technologies.",
                     },
                     {
                       icon: "fa-people-group",
                       title: "Team Collaboration",
-                      sub: "Worked with cross-functional teams to deliver solutions.",
+                      sub: "Worked with teams to deliver features.",
                     },
                   ].map((item) => (
                     <div
@@ -2382,16 +2705,15 @@ export default function PortfolioPage() {
                     marginTop: "20px",
                     paddingTop: "14px",
                     borderTop: "1px solid rgba(148,163,184,0.12)",
-                    fontSize: "18px",
-                    lineHeight: 1.45,
+                    fontSize: "15px",
+                    lineHeight: 1.5,
                     color: "#cbd5e1",
                     fontWeight: "500",
                     fontStyle: "italic",
                   }}
                 >
-                  <span style={{ fontSize: "26px", color: "#7dd3fc" }}>“</span>I
-                  believe in learning by building, solving real problems, and
-                  continuously improving.
+                  <span style={{ fontSize: "22px", color: "#7dd3fc" }}>“</span>
+                  Learn by building, solving problems, and improving every day.
                 </div>
               </div>
 
@@ -2411,6 +2733,11 @@ export default function PortfolioPage() {
                           idx === experience.length - 1 ? 0 : "18px",
                       }}
                     >
+                      <div
+                        className="experience-timeline-dot"
+                        style={{ background: isBlue ? "#f87171" : "#34d399" }}
+                        aria-hidden="true"
+                      />
                       <div className="experience-timeline-icon" aria-hidden="true">
                         {exp.icon}
                       </div>
@@ -2418,7 +2745,7 @@ export default function PortfolioPage() {
                       <div
                         className="experience-timeline-card"
                         style={{
-                          padding: "16px 16px 14px",
+                          padding: "18px",
                         }}
                       >
                         <div
@@ -2427,7 +2754,9 @@ export default function PortfolioPage() {
                             alignItems: "center",
                             justifyContent: "space-between",
                             gap: "12px",
-                            marginBottom: "10px",
+                            marginBottom: "12px",
+                            paddingBottom: "12px",
+                            borderBottom: "1px solid rgba(148,163,184,0.14)",
                           }}
                         >
                           <div
@@ -2465,11 +2794,10 @@ export default function PortfolioPage() {
                                 style={{
                                   fontSize: "18px",
                                   fontWeight: "800",
-                                  color: "#dbeafe",
+                                  color: isBlue ? "#fca5a5" : "#6ee7b7",
                                   lineHeight: 1.2,
-                                  whiteSpace: "nowrap",
-                                  overflow: "hidden",
-                                  textOverflow: "ellipsis",
+                                  letterSpacing: "0.01em",
+                                  overflowWrap: "anywhere",
                                 }}
                               >
                                 {exp.company}
@@ -2513,43 +2841,37 @@ export default function PortfolioPage() {
                           className="experience-period"
                           style={{
                             display: "flex",
-                            justifyContent: "space-between",
+                            justifyContent: "flex-start",
                             alignItems: "center",
-                            gap: "12px",
-                            marginBottom: "10px",
-                            color: "#9fb1c8",
+                            gap: "8px",
+                            marginBottom: "12px",
+                            padding: "8px 10px",
+                            borderRadius: "9px",
+                            border: "1px solid rgba(96,165,250,0.16)",
+                            background: "rgba(96,165,250,0.07)",
+                            color: "#bfdbfe",
                             fontSize: "12px",
                             fontWeight: "700",
                           }}
                         >
-                          <span>{exp.period.split(" – ")[0].replace("January", "Jan").replace("December", "Dec")}</span>
-                          <span>{exp.period.includes("Present") ? "Present" : exp.period.split(" – ")[1] || ""}</span>
+                          <i className="fa-regular fa-calendar" aria-hidden="true" />
+                          <span>{exp.period.replace("January", "Jan").replace("December", "Dec").replace("September", "Sep").replace(" · ", " • ")}</span>
                         </div>
 
-                        <ul
+                        <p
                           className="experience-description"
                           style={{
-                            margin: "0 0 12px",
-                            paddingLeft: "18px",
+                            margin: "0 0 14px",
+                            padding: 0,
                             color: "#dbeafe",
                             fontSize: "14px",
                             lineHeight: 1.6,
                           }}
                         >
-                          {exp.description
-                            .split(". ")
-                            .filter(Boolean)
-                            .map((sentence) => (
-                              <li
-                                key={sentence}
-                                style={{ marginBottom: "4px" }}
-                              >
-                                {sentence.trim()}.
-                              </li>
-                            ))}
-                        </ul>
+                          {exp.description}
+                        </p>
 
-                        <div>
+                        <div className="experience-card-skills">
                           <div
                             style={{
                               fontSize: "12px",
@@ -2616,9 +2938,7 @@ export default function PortfolioPage() {
               </h3>
 
               <p className="education-subtitle">
-                My academic journey has given me a strong foundation in computer
-                science and problem solving, which helped me build my career in
-                web development.
+                Computer science studies built my software development foundation.
               </p>
             </div>
 
@@ -2633,11 +2953,7 @@ export default function PortfolioPage() {
                   </div>
 
                   <p className="education-overview-copy">
-                    My educational journey has helped me develop a solid
-                    understanding of computer science concepts and practical
-                    skills. From learning core fundamentals in 10th and Diploma to
-                    advanced technologies in B.Tech, every step has contributed to
-                    my growth as a developer.
+                    From school fundamentals to B.Tech projects, each step strengthened my computer science skills.
                   </p>
 
                   <div className="education-grid-metrics">
@@ -2671,7 +2987,7 @@ export default function PortfolioPage() {
                           Computer Science
                         </div>
                         <div className="education-metric-sub">
-                          Focused on technology and problem solving
+                          Technology and problem solving
                         </div>
                       </div>
                     </div>
@@ -2688,7 +3004,7 @@ export default function PortfolioPage() {
                           Practical Learning
                         </div>
                         <div className="education-metric-sub">
-                          Built strong technical and analytical skills
+                          Skills built through practice
                         </div>
                       </div>
                     </div>
@@ -2705,7 +3021,7 @@ export default function PortfolioPage() {
                           Career Preparation
                         </div>
                         <div className="education-metric-sub">
-                          Education that shaped my development career
+                          Preparing for software development
                         </div>
                       </div>
                     </div>
@@ -2714,8 +3030,7 @@ export default function PortfolioPage() {
 
                 <div className="education-quote-card">
                   <span style={{ fontSize: "26px", color: "#7dd3fc" }}>“</span>
-                  Education is the foundation that gave me the knowledge and
-                  confidence to build real-world solutions.
+                  Learning that helps me build real-world solutions.
                 </div>
               </div>
 
@@ -2728,8 +3043,9 @@ export default function PortfolioPage() {
                     duration: "1 Year",
                     title: "Matriculation (10th)",
                     subtitle: "BSEB Board",
+                    logo: bsebLogo,
                     description:
-                      "Completed my 10th from BSEB Board with a focus on building a strong academic foundation.",
+                      "Built foundations in core subjects and analytical thinking.",
                     color: "#60a5fa",
                     tagColor: "rgba(96,165,250,0.12)",
                     tagBorder: "rgba(96,165,250,0.25)",
@@ -2749,8 +3065,9 @@ export default function PortfolioPage() {
                     duration: "3 Years",
                     title: "Diploma in Computer Science Engineering",
                     subtitle: "Sri Sukhmani Polytechnic",
+                    logo: sriSukhmaniLogo,
                     description:
-                      "Completed my diploma in CSE, where I gained fundamental knowledge in programming, web technologies and software development.",
+                      "Learned programming, web development, and databases.",
                     color: "#34d399",
                     tagColor: "rgba(16,185,129,0.12)",
                     tagBorder: "rgba(16,185,129,0.28)",
@@ -2770,8 +3087,9 @@ export default function PortfolioPage() {
                     duration: "3 Years",
                     title: "B.Tech in Computer Science Engineering",
                     subtitle: "Chandigarh Group of Colleges, Landran",
+                    logo: cgcLandranLogo,
                     description:
-                      "Completed my B.Tech in CSE, where I enhanced my technical skills, worked on real-world projects, and gained deeper knowledge in software development.",
+                      "Built software skills through coursework and practical projects.",
                     color: "#a78bfa",
                     tagColor: "rgba(168,85,247,0.12)",
                     tagBorder: "rgba(168,85,247,0.28)",
@@ -2816,10 +3134,7 @@ export default function PortfolioPage() {
                           boxShadow: `0 10px 24px ${item.tagColor}, inset 0 0 0 1px rgba(255,255,255,0.04)`,
                         }}
                       >
-                        <span>{item.year.split(" - ")[0]}</span>
-                        <span style={{ opacity: 0.9 }}>
-                          {item.year.split(" - ")[1] || item.duration}
-                        </span>
+                        <span>{item.year.replace(/\s*-\s*/, "–")}</span>
                       </div>
                     </div>
 
@@ -2829,21 +3144,33 @@ export default function PortfolioPage() {
                           <div
                             className="education-card-icon"
                             style={{
-                              background: item.iconBg,
+                              background: item.logo ? "#f8fafc" : item.iconBg,
                               color: item.iconText,
                             }}
                           >
-                            {item.icon}
+                            {item.logo ? (
+                              <img src={item.logo} alt={`${item.subtitle} logo`} />
+                            ) : (
+                              item.icon
+                            )}
                           </div>
 
-                          <div style={{ minWidth: 0 }}>
+                          <div style={{ minWidth: 0, flex: 1 }}>
                             <div className="education-card-title">
                               {item.title}
                             </div>
-                            <div className="education-card-subtitle">
+                            <div
+                              className="education-card-subtitle"
+                              style={{
+                                color: item.color,
+                                fontWeight: 700,
+                                letterSpacing: "0.01em",
+                              }}
+                            >
                               {item.subtitle}
                             </div>
                           </div>
+
                         </div>
 
                         <div
@@ -3160,8 +3487,8 @@ export default function PortfolioPage() {
         <section
           id="projects"
           style={{
-            paddingTop: "64px",
-            paddingBottom: "64px",
+            paddingTop: "96px",
+            paddingBottom: "96px",
             borderTop: "1px solid rgba(255, 255, 255, 0.05)",
             background: "rgba(8, 12, 20, 1)",
             position: "relative",
@@ -3226,16 +3553,17 @@ export default function PortfolioPage() {
             </div>
 
             <div
+              className="projects-grid"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
-                gap: "20px",
+                gap: "32px",
               }}
             >
               {projects.map((project) => (
                 <div
                   key={project.title}
-                  className="glass-card"
+                  className="glass-card project-card"
                   style={{
                     borderRadius: "18px",
                     overflow: "hidden",
@@ -3250,6 +3578,7 @@ export default function PortfolioPage() {
                   }}
                 >
                   <div
+                    className="project-card-image"
                     style={{
                       position: "relative",
                       height: "160px",
@@ -3304,6 +3633,7 @@ export default function PortfolioPage() {
                   </div>
 
                   <div
+                    className="project-card-content"
                     style={{
                       padding: "16px 16px 18px",
                       display: "flex",
@@ -3313,6 +3643,7 @@ export default function PortfolioPage() {
                     }}
                   >
                     <span
+                      className="project-card-category"
                       style={{
                         fontSize: "11px",
                         fontWeight: "700",
@@ -3326,6 +3657,7 @@ export default function PortfolioPage() {
                     </span>
 
                     <h4
+                      className="project-card-title"
                       style={{
                         fontSize: "18px",
                         fontWeight: "700",
@@ -3338,6 +3670,7 @@ export default function PortfolioPage() {
                     </h4>
 
                     <p
+                      className="project-card-description"
                       style={{
                         fontSize: "14px",
                         color: "#cbd5e1",
@@ -3354,6 +3687,7 @@ export default function PortfolioPage() {
                     </p>
 
                     <div
+                      className="project-card-tech"
                       style={{
                         display: "flex",
                         flexWrap: "wrap",
@@ -3379,6 +3713,7 @@ export default function PortfolioPage() {
                     </div>
 
                     <div
+                      className="project-card-actions"
                       style={{
                         display: "flex",
                         gap: "10px",
@@ -3387,6 +3722,7 @@ export default function PortfolioPage() {
                       }}
                     >
                       <a
+                        className="project-card-action"
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -3419,6 +3755,7 @@ export default function PortfolioPage() {
                       </a>
 
                       <a
+                        className="project-card-action"
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"

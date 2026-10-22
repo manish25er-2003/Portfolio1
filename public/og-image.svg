@@ -16,6 +16,6 @@
   <rect x="80" y="80" width="220" height="220" rx="32" fill="url(#accent)"/>
   <text x="130" y="200" font-family="Arial, sans-serif" font-size="110" font-weight="700" fill="#ffffff">A</text>
   <text x="80" y="390" font-family="Arial, sans-serif" font-size="72" font-weight="700" fill="#f8fafc">Amit Kumar</text>
-  <text x="80" y="468" font-family="Arial, sans-serif" font-size="28" font-weight="500" fill="#cbd5e1">Full-Stack Developer Portfolio</text>
+  <text x="80" y="468" font-family="Arial, sans-serif" font-size="28" font-weight="500" fill="#cbd5e1">Full-Stack Developer &amp; AI Solutions Engineer</text>
   <text x="80" y="520" font-family="Arial, sans-serif" font-size="24" fill="#a5d6ff">Laravel • PHP • MERN • Web Development</text>
 </svg>

@@ -1,7 +1,8 @@
 :root {
-  --font-family-base: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --type-page-heading: 34px;
-  --type-section-heading: 29px;
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-heading: var(--font-family-base);
+  --type-page-heading: 36px;
+  --type-section-heading: 31px;
   --type-card-heading: 21px;
   --type-subheading: 18px;
   --type-organization: 15px;
@@ -48,7 +49,24 @@ h6,
 .portfolio-page-heading,
 .portfolio-section-title,
 .education-card-title {
+  font-family: var(--font-family-heading);
   font-weight: 800 !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.portfolio-page-heading,
+.portfolio-section-title,
+.education-card-title,
+.portfolio-greeting,
+.portfolio-typewriter-shell,
+.experience-role,
+.experience-journey-item-title {
+  font-family: var(--font-family-heading);
+}
+
+.portfolio-page-heading,
+.portfolio-section-title {
+  font-weight: 700 !important;
 }
 
 h1,
@@ -86,8 +104,8 @@ label {
 
 @media (min-width: 768px) and (max-width: 1024px) {
   :root {
-    --type-page-heading: 30px;
-    --type-section-heading: 26px;
+    --type-page-heading: 32px;
+    --type-section-heading: 27px;
     --type-card-heading: 20px;
     --type-subheading: 17px;
     --type-organization: 15px;
@@ -98,8 +116,8 @@ label {
 
 @media (max-width: 767px) {
   :root {
-    --type-page-heading: 27px;
-    --type-section-heading: 23px;
+    --type-page-heading: 29px;
+    --type-section-heading: 24px;
     --type-card-heading: 19px;
     --type-subheading: 16px;
     --type-organization: 14px;
