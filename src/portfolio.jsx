@@ -1174,8 +1174,8 @@ export default function PortfolioPage() {
           pointer-events: none;
           border-radius: 36px;
           background:
-            radial-gradient(ellipse at 82% 24%, rgba(0, 177, 255, .19), transparent 38%),
-            radial-gradient(ellipse at 22% 84%, rgba(0, 206, 232, .15), transparent 42%);
+            radial-gradient(ellipse at 82% 24%, rgba(0, 177, 255, .11), transparent 38%),
+            radial-gradient(ellipse at 22% 84%, rgba(0, 206, 232, .08), transparent 42%);
         }
 
         .hero-graphic-orbit {
@@ -1184,9 +1184,9 @@ export default function PortfolioPage() {
           aspect-ratio: 1;
           right: -6%;
           top: 13%;
-          border: 1px solid rgba(22, 194, 255, .62);
+          border: 1px solid rgba(22, 194, 255, .38);
           border-radius: 50%;
-          box-shadow: 0 0 30px rgba(0, 178, 255, .08), inset 0 0 35px rgba(0, 178, 255, .04);
+          box-shadow: 0 0 30px rgba(0, 178, 255, .045), inset 0 0 35px rgba(0, 178, 255, .025);
           animation: hero-orbit-turn 34s linear infinite;
         }
 
@@ -1202,10 +1202,10 @@ export default function PortfolioPage() {
           position: absolute;
           width: 54%;
           height: 43%;
-          border: 1px solid rgba(177, 228, 255, .55);
+          border: 1px solid rgba(177, 228, 255, .34);
           border-radius: 34px;
-          background: linear-gradient(135deg, rgba(164, 213, 240, .18), rgba(14, 78, 120, .08) 55%, rgba(0, 188, 236, .12));
-          box-shadow: inset 0 0 24px rgba(203, 238, 255, .09), 0 0 24px rgba(0, 191, 255, .12);
+          background: linear-gradient(135deg, rgba(164, 213, 240, .1), rgba(14, 78, 120, .05) 55%, rgba(0, 188, 236, .07));
+          box-shadow: inset 0 0 24px rgba(203, 238, 255, .05), 0 0 24px rgba(0, 191, 255, .06);
           backdrop-filter: blur(4px);
         }
 
@@ -1225,7 +1225,7 @@ export default function PortfolioPage() {
         .hero-graphic-grid {
           position: absolute;
           inset: 0;
-          opacity: .19;
+          opacity: .12;
           background-image: linear-gradient(rgba(77, 172, 220, .25) 1px, transparent 1px), linear-gradient(90deg, rgba(77, 172, 220, .25) 1px, transparent 1px);
           background-size: 100% 25%, 25% 100%;
           mask-image: linear-gradient(90deg, transparent, #000 65%);
@@ -4262,28 +4262,52 @@ export default function PortfolioPage() {
         </section>
       </main>
 
-      <footer
-        style={{
-          paddingTop: "32px",
-          paddingBottom: "32px",
-          borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-          background: "rgba(8, 11, 19, 1)",
-          textAlign: "center",
-          color: "#64748b",
-          fontSize: "14px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1280px",
-            margin: "0 auto",
-            padding: "0 24px",
-          }}
-        >
-          <p style={{ margin: 0 }}>
-            © {new Date().getFullYear()} Manish Kumar. Built with React &
-            Tailwind CSS.
-          </p>
+      <footer className="portfolio-footer">
+        <div className="portfolio-footer__main">
+          <div className="portfolio-footer__intro">
+            <a className="portfolio-footer__brand" href="#home" aria-label="Manish Kumar, back to home">
+              <span className="portfolio-footer__monogram" aria-hidden="true">MK</span>
+              <span>Manish Kumar<small>Full-Stack Developer</small></span>
+            </a>
+            <p>Building reliable web applications and thoughtful AI-powered experiences for real-world problems.</p>
+            <div className="portfolio-footer__socials">
+              <a href="https://github.com/manish25er-2003/" target="_blank" rel="noreferrer" aria-label="GitHub">
+                <i className="fa-brands fa-github" aria-hidden="true" />
+              </a>
+              <a href="https://linkedin.com/in/manish-kumar" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          <nav className="portfolio-footer__column" aria-label="Footer sections">
+            <h2>Explore</h2>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <div className="portfolio-footer__column">
+            <h2>What I work with</h2>
+            <a href="#skills">PHP &amp; Laravel</a>
+            <a href="#skills">React &amp; JavaScript</a>
+            <a href="#skills">MySQL &amp; MongoDB</a>
+            <a href="#ai-tools">AI tools &amp; integrations</a>
+            <a href="#projects">Selected projects</a>
+          </div>
+
+          <div className="portfolio-footer__column portfolio-footer__contact">
+            <h2>Get in touch</h2>
+            <a href="mailto:manish25er@gmail.com"><i className="fa-regular fa-envelope" aria-hidden="true" />manish25er@gmail.com</a>
+            <a href="tel:+917087338600"><i className="fa-solid fa-phone" aria-hidden="true" />+91 70873 38600</a>
+            <a href="#contact" className="portfolio-footer__contact-link">Let’s talk about your project <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div className="portfolio-footer__bottom">
+          <span>© {new Date().getFullYear()} Manish Kumar · Full-Stack Developer &amp; AI Solutions Engineer</span>
+          <a href="#home" aria-label="Back to top">Back to top ↑</a>
         </div>
       </footer>
     </div>
