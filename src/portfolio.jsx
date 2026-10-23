@@ -200,11 +200,54 @@ function TypewriterText({ phrases, textStyle, cursorStyle }) {
 export default function PortfolioPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formMessage, setFormMessage] = useState("");
+  const [formMessageType, setFormMessageType] = useState("success");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setFormMessage("Message sent successfully!");
-    setTimeout(() => setFormMessage(""), 5000);
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setFormMessage("");
+
+    try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      const submission = Object.fromEntries(formData.entries());
+      submission._url = window.location.href;
+      submission._subject = `Portfolio message from ${submission.name || "a visitor"}`;
+      submission._replyto = submission.email;
+      const response = await fetch("https://formsubmit.co/ajax/manish25er@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(submission),
+      });
+      const result = await response.json();
+      const activationRequired = /needs activation|activate form/i.test(result.message || "");
+
+      if (response.ok && activationRequired) {
+        setFormMessageType("pending");
+        setFormMessage(result.message);
+        form.reset();
+        return;
+      }
+
+      if (!response.ok || (result.success !== true && result.success !== "true")) {
+        throw new Error(result.message || "The message could not be sent.");
+      }
+
+      setFormMessageType("success");
+      setFormMessage("Message received. If this is the first submission, confirm FormSubmit’s activation email to enable delivery.");
+      form.reset();
+    } catch (error) {
+      setFormMessageType("error");
+      setFormMessage(error.message || "Could not send your message. Please email manish25er@gmail.com.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -1237,7 +1280,96 @@ export default function PortfolioPage() {
 
         .about-highlight-card { min-width: 0; }
 
+        .contact-layout {
+          display: grid;
+          grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+          align-items: start;
+          gap: 48px;
+        }
+
+        .contact-form-card {
+          padding: 30px;
+          border: 1px solid rgba(148, 163, 184, .17);
+          border-radius: 18px;
+          background: linear-gradient(145deg, rgba(17, 28, 45, .92), rgba(10, 17, 29, .94));
+          box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
+        }
+
+        .contact-form-fields {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 18px 14px;
+        }
+
+        .contact-field { min-width: 0; }
+        .contact-field-message { grid-column: 1 / -1; }
+
+        .contact-field-label {
+          display: block;
+          margin-bottom: 7px;
+          color: #d5dfeb;
+          font-size: 13px;
+          font-weight: 650;
+          letter-spacing: .01em;
+        }
+
+        .contact-field-input {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 13px 14px;
+          border: 1px solid #29384b;
+          border-radius: 9px;
+          background: rgba(5, 12, 22, .72);
+          color: #f1f5f9;
+          font-size: 14px;
+          transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+        }
+
+        .contact-field-input::placeholder { color: #718096; }
+        .contact-field-input:focus {
+          border-color: #38bdf8 !important;
+          background: #0b1726 !important;
+          box-shadow: 0 0 0 3px rgba(56, 189, 248, .12) !important;
+        }
+
+        .contact-submit {
+          align-self: flex-start;
+          min-height: 46px;
+          padding: 0 20px;
+          border: 1px solid rgba(125, 211, 252, .38);
+          border-radius: 9px;
+          background: #0e7490;
+          color: #f0f9ff;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: .01em;
+          cursor: pointer;
+          transition: background .2s ease, transform .2s ease;
+        }
+
+        .contact-submit:hover { background: #0891b2; transform: translateY(-1px); }
+
         @media (max-width: 767px) {
+          #contact {
+            padding-top: 64px !important;
+            padding-bottom: 64px !important;
+          }
+
+          #contact > div {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+
+          .contact-layout {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 24px;
+          }
+
+          .contact-form-card { padding: 20px 16px; }
+          .contact-form-fields { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+          .contact-field-message { grid-column: auto; }
+          .contact-submit { width: 100%; }
+
           #experience {
             padding-top: 64px !important;
             padding-bottom: 64px !important;
@@ -3865,19 +3997,15 @@ export default function PortfolioPage() {
             </div>
 
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                gap: "48px",
-              }}
+              className="contact-layout"
             >
-              <div>
+              <div className="contact-form-card">
                 <form
                   onSubmit={handleFormSubmit}
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "20px",
+                    gap: "18px",
                   }}
                 >
                   {formMessage && (
@@ -3885,142 +4013,94 @@ export default function PortfolioPage() {
                       style={{
                         padding: "16px",
                         borderRadius: "12px",
-                        background: "rgba(16, 185, 129, 0.1)",
-                        border: "1px solid rgba(16, 185, 129, 0.3)",
-                        color: "#10b981",
+                        background: formMessageType === "success" ? "rgba(16, 185, 129, 0.1)" : formMessageType === "pending" ? "rgba(56, 189, 248, 0.1)" : "rgba(248, 113, 113, 0.1)",
+                        border: `1px solid ${formMessageType === "success" ? "rgba(16, 185, 129, 0.3)" : formMessageType === "pending" ? "rgba(56, 189, 248, 0.3)" : "rgba(248, 113, 113, 0.3)"}`,
+                        color: formMessageType === "success" ? "#10b981" : formMessageType === "pending" ? "#7dd3fc" : "#fca5a5",
                         fontSize: "14px",
                         display: "flex",
                         gap: "8px",
                         alignItems: "center",
                       }}
                     >
-                      <i className="fa-solid fa-circle-check" />
+                      <i className={`fa-solid ${formMessageType === "success" ? "fa-circle-check" : formMessageType === "pending" ? "fa-envelope" : "fa-circle-exclamation"}`} />
                       {formMessage}
                     </div>
                   )}
 
-                  <div>
+                  <div className="contact-form-fields">
+                  <input
+                    type="text"
+                    name="_honey"
+                    tabIndex="-1"
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ display: "none" }}
+                  />
+                  <div className="contact-field">
                     <label
-                      style={{
-                        display: "block",
-                        fontSize: "14px",
-                        fontWeight: "600",
-                        color: "#cbd5e1",
-                        marginBottom: "8px",
-                      }}
+                      htmlFor="contact-name"
+                      className="contact-field-label"
                     >
-                      Full Name
+                      Your name
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
-                      placeholder="Your name"
+                      placeholder="e.g. Alex Morgan"
+                      autoComplete="name"
                       required
-                      style={{
-                        width: "100%",
-                        padding: "12px 16px",
-                        borderRadius: "10px",
-                        background: "rgba(255, 255, 255, 0.04)",
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
-                        color: "white",
-                        fontSize: "14px",
-                        boxSizing: "border-box",
-                        transition: "all 0.3s",
-                      }}
+                      className="contact-field-input"
                     />
                   </div>
 
-                  <div>
+                  <div className="contact-field">
                     <label
-                      style={{
-                        display: "block",
-                        fontSize: "14px",
-                        fontWeight: "600",
-                        color: "#cbd5e1",
-                        marginBottom: "8px",
-                      }}
+                      htmlFor="contact-email"
+                      className="contact-field-label"
                     >
-                      Email Address
+                      Email address
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder="you@example.com"
+                      autoComplete="email"
                       required
-                      style={{
-                        width: "100%",
-                        padding: "12px 16px",
-                        borderRadius: "10px",
-                        background: "rgba(255, 255, 255, 0.04)",
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
-                        color: "white",
-                        fontSize: "14px",
-                        boxSizing: "border-box",
-                        transition: "all 0.3s",
-                      }}
+                      className="contact-field-input"
                     />
                   </div>
 
-                  <div>
+                  <div className="contact-field contact-field-message">
                     <label
-                      style={{
-                        display: "block",
-                        fontSize: "14px",
-                        fontWeight: "600",
-                        color: "#cbd5e1",
-                        marginBottom: "8px",
-                      }}
+                      htmlFor="contact-message"
+                      className="contact-field-label"
                     >
-                      Message
+                      What can I help with?
                     </label>
                     <textarea
-                      placeholder="Tell me about your project or inquiry..."
-                      rows="5"
+                      id="contact-message"
+                      name="message"
+                      placeholder="A short note about your project, goals, or timeline is plenty."
+                      rows="4"
                       required
-                      style={{
-                        width: "100%",
-                        padding: "12px 16px",
-                        borderRadius: "10px",
-                        background: "rgba(255, 255, 255, 0.04)",
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
-                        color: "white",
-                        fontSize: "14px",
-                        boxSizing: "border-box",
-                        resize: "none",
-                        transition: "all 0.3s",
-                      }}
+                      className="contact-field-input"
+                      style={{ resize: "vertical", minHeight: "120px" }}
                     />
+                  </div>
                   </div>
 
                   <button
                     type="submit"
-                    style={{
-                      padding: "14px 32px",
-                      borderRadius: "10px",
-                      background: "linear-gradient(to right, #6366f1, #06b6d4)",
-                      color: "white",
-                      fontWeight: "600",
-                      fontSize: "15px",
-                      border: "none",
-                      cursor: "pointer",
-                      transition: "all 0.3s ease",
-                      boxShadow: "0 4px 15px rgba(99, 102, 241, 0.3)",
-                      marginTop: "8px",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.transform = "translateY(-2px)";
-                      e.target.style.boxShadow =
-                        "0 6px 20px rgba(99, 102, 241, 0.4)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.transform = "translateY(0)";
-                      e.target.style.boxShadow =
-                        "0 4px 15px rgba(99, 102, 241, 0.3)";
-                    }}
+                    className="contact-submit"
+                    disabled={isSubmitting}
                   >
                     <i
-                      className="fa-solid fa-paper-plane"
+                      className="fa-solid fa-arrow-right"
                       style={{ marginRight: "8px" }}
                     />
-                    Send Message
+                    {isSubmitting ? "Sending…" : "Send inquiry"}
                   </button>
                 </form>
               </div>
@@ -4048,8 +4128,8 @@ export default function PortfolioPage() {
                   {
                     icon: "fa-github",
                     label: "GitHub",
-                    value: "github.com/manish25er",
-                    link: "https://github.com/manish25er",
+                    value: "github.com/manish25er-2003",
+                    link: "https://github.com/manish25er-2003/",
                   },
                   {
                     icon: "fa-linkedin",

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const siteUrl = "https://manish25er.workers.dev";
+const siteUrl = "https://manishpro.in";
 const projectRoot = path.resolve("public/projects");
 const projectUrls = fs.existsSync(projectRoot)
   ? fs
