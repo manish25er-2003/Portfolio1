@@ -3,6 +3,8 @@ import profileImage from "./assets/update-image22.png";
 import bsebLogo from "./assets/education/bihar-school-examination-board.jpg";
 import sriSukhmaniLogo from "./assets/education/sri-sukhmani.png";
 import cgcLandranLogo from "./assets/education/cgc-landran.png";
+import gymProjectImage from "./assets/fz fintenss.png";
+import roomSpotProjectImage from "./assets/room-spot.png";
 
 const portfolioNav = [
   { label: "Home", href: "#home" },
@@ -72,8 +74,7 @@ const projects = [
     description:
       "A modern fitness brand landing page and gym membership experience built to promote training programs, coaching, and healthy lifestyle goals.",
     technologies: ["React.js", "Node.js", "Responsive UI"],
-    image:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+    image: gymProjectImage,
     liveUrl: "https://fitflowfz.manish25er.workers.dev/",
     githubUrl: "https://github.com/manish25er-2003/Fitflowfz",
     detailsUrl: "/projects/fz-gym-fitness/",
@@ -96,8 +97,7 @@ const projects = [
     description:
       "A modern rental discovery platform for searching, comparing, and booking rooms and apartments with a premium property browsing experience.",
     technologies: ["React.js", "Node.js", "MongoDB", "REST API"],
-    image:
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
+    image: roomSpotProjectImage,
     liveUrl: "https://roomspot.manish25er.workers.dev/",
     githubUrl: "https://github.com/manish25er-2003/RoomSpot",
     detailsUrl: "/projects/roomspot/",
