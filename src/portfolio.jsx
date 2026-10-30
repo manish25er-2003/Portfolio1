@@ -10,36 +10,47 @@ const portfolioNav = [
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
-  { label: "AI Tools", href: "#ai-tools" },
+  { label: "Tools", href: "#ai-tools" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
 const skillGroups = [
   {
-    title: "Frontend",
-    items: [
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "React",
-      "Responsive Design",
-      "Tailwind CSS",
-    ],
-    icon: "👨‍💻",
+    title: "CMS & Design",
+    items: ["WordPress", "Shopify", "Elementor", "Framer"],
+    icon: "🧩",
     color: "indigo",
   },
   {
-    title: "Backend & DB",
-    items: ["PHP", "Java", "Laravel", "REST APIs", "MySQL", "MongoDB"],
-    icon: "⚙️",
+    title: "Frontend",
+    items: ["HTML", "CSS", "JavaScript", "React.js"],
+    icon: "💻",
     color: "cyan",
   },
   {
-    title: "Tools & Others",
-    items: ["Git & GitHub", "VS Code", "WordPress", "UI/UX Basics", "Firebase"],
-    icon: "🛠️",
+    title: "Backend",
+    items: ["PHP", "Laravel", "Node.js", "REST APIs"],
+    icon: "⚙️",
     color: "emerald",
+  },
+  {
+    title: "Database",
+    items: ["MySQL", "MongoDB", "Firebase"],
+    icon: "🗄️",
+    color: "purple",
+  },
+  {
+    title: "Cloud & Deployment",
+    items: ["Cloudflare", "Firebase Hosting", "GitHub", "DNS", "SSL/TLS"],
+    icon: "☁️",
+    color: "sky",
+  },
+  {
+    title: "Tools",
+    items: ["Git", "GitHub", "Postman", "VS Code"],
+    icon: "🛠️",
+    color: "orange",
   },
 ];
 
@@ -1704,7 +1715,7 @@ export default function PortfolioPage() {
                 letterSpacing: "-0.01em",
               }}
             >
-              Manish<span style={{ color: "#06b6d4" }}>.dev</span>
+              Manish
             </span>
           </a>
 
