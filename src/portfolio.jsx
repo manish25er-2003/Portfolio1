@@ -69,6 +69,16 @@ const aiTools = [
 
 const projects = [
   {
+    title: "CareerPilot AI",
+    category: "AI Career Guidance Platform",
+    description:
+      "An AI-powered career guidance platform to manage skills, resumes, job applications, interview practice, and career progress.",
+    technologies: ["Laravel", "PHP", "MySQL", "JavaScript", "AI"],
+    image: "/CareerPilot AI Project Showcase.png",
+    liveUrl: "https://apps.manishpro.in",
+    ctaLabel: "View Project",
+  },
+  {
     title: "FZ Gym Fitness",
     category: "Gym & Fitness Platform",
     description:
@@ -210,9 +220,35 @@ function TypewriterText({ phrases, textStyle, cursorStyle }) {
 
 export default function PortfolioPage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("Home");
   const [formMessage, setFormMessage] = useState("");
   const [formMessageType, setFormMessageType] = useState("success");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const marker = window.scrollY + 140;
+      let current = "Home";
+
+      portfolioNav.forEach((item) => {
+        const section = document.querySelector(item.href);
+        if (section && section.offsetTop <= marker) {
+          current = item.label;
+        }
+      });
+
+      setActiveSection(current);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -324,9 +360,63 @@ export default function PortfolioPage() {
         }
 
         .portfolio-desktop-nav {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
           display: flex;
           align-items: center;
-          gap: 32px;
+          justify-content: center;
+          gap: 4px;
+        }
+
+        .portfolio-desktop-nav-link {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          height: 40px;
+          padding: 0 12px;
+          border-radius: 12px;
+          font-size: 13px;
+          font-weight: 600;
+          color: #cbd5e1;
+          text-decoration: none;
+          transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .portfolio-desktop-nav-link:hover {
+          color: #ffffff;
+          background: rgba(255, 255, 255, 0.055);
+        }
+
+        .portfolio-desktop-nav-link.active {
+          color: #f8fafc;
+          background: linear-gradient(135deg, rgba(99, 102, 241, 0.16), rgba(6, 182, 212, 0.1));
+          box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
+        }
+
+        .portfolio-desktop-nav-link.active::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          bottom: 5px;
+          width: 14px;
+          height: 2px;
+          border-radius: 999px;
+          background: linear-gradient(90deg, #6366f1, #06b6d4);
+          transform: translateX(-50%);
+        }
+
+        .portfolio-header-shell {
+          position: relative;
+          height: 64px;
+          padding: 0 12px 0 14px;
+          border-radius: 18px;
+          border: 1px solid rgba(148, 163, 184, 0.12);
+          background: rgba(11, 15, 25, 0.82);
+          box-shadow: 0 14px 36px rgba(2, 6, 23, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.025);
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
         }
 
         .portfolio-mobile-header-actions {
@@ -397,6 +487,12 @@ export default function PortfolioPage() {
         .portfolio-mobile-nav-link:hover {
           background: rgba(30, 41, 59, 0.8);
           color: #ffffff;
+        }
+
+        .portfolio-mobile-nav-link.active {
+          background: linear-gradient(135deg, rgba(99, 102, 241, 0.16), rgba(6, 182, 212, 0.1));
+          color: #ffffff;
+          box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
         }
         
         .text-gradient {
@@ -1361,6 +1457,16 @@ export default function PortfolioPage() {
         .contact-submit:hover { background: #0891b2; transform: translateY(-1px); }
 
         @media (max-width: 767px) {
+          .portfolio-header-shell,
+          .portfolio-mobile-menu-panel {
+            width: calc(100% - 24px) !important;
+          }
+
+          .portfolio-header-shell {
+            height: 58px !important;
+            border-radius: 15px !important;
+          }
+
           #contact {
             padding-top: 64px !important;
             padding-bottom: 64px !important;
@@ -1663,23 +1769,22 @@ export default function PortfolioPage() {
       <header
         style={{
           position: "fixed",
-          top: 0,
+          top: "14px",
           zIndex: 50,
           width: "100%",
-          background: "rgba(11, 15, 25, 0.8)",
-          backdropFilter: "blur(12px)",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
+          pointerEvents: "none",
         }}
       >
         <div
+          className="portfolio-header-shell"
           style={{
             maxWidth: "1280px",
+            width: "calc(100% - 48px)",
             margin: "0 auto",
-            padding: "0 24px",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            height: "80px",
+            pointerEvents: "auto",
           }}
         >
           <a
@@ -1687,12 +1792,14 @@ export default function PortfolioPage() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "12px",
+              gap: "10px",
               textDecoration: "none",
               color: "white",
+              zIndex: 2,
             }}
           >
             <div
+              className="portfolio-brand-mark"
               style={{
                 width: "40px",
                 height: "40px",
@@ -1719,20 +1826,13 @@ export default function PortfolioPage() {
             </span>
           </a>
 
-          <nav className="portfolio-desktop-nav" style={{ gap: "32px" }}>
+          <nav className="portfolio-desktop-nav" aria-label="Primary navigation">
             {portfolioNav.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                style={{
-                  fontSize: "14px",
-                  fontWeight: "500",
-                  color: "#cbd5e1",
-                  textDecoration: "none",
-                  transition: "color 0.3s",
-                }}
-                onMouseEnter={(e) => (e.target.style.color = "#06b6d4")}
-                onMouseLeave={(e) => (e.target.style.color = "#cbd5e1")}
+                className={`portfolio-desktop-nav-link ${activeSection === item.label ? "active" : ""}`}
+                aria-current={activeSection === item.label ? "page" : undefined}
               >
                 {item.label}
               </a>
@@ -1768,10 +1868,18 @@ export default function PortfolioPage() {
 
         {menuOpen && (
           <div
+            className="portfolio-mobile-menu-panel"
             style={{
               maxWidth: "1280px",
-              margin: "0 auto",
-              padding: "0 24px 16px",
+              width: "calc(100% - 48px)",
+              margin: "8px auto 0",
+              padding: "10px",
+              borderRadius: "16px",
+              border: "1px solid rgba(148, 163, 184, 0.12)",
+              background: "rgba(11, 15, 25, 0.94)",
+              boxShadow: "0 16px 38px rgba(2, 6, 23, 0.32)",
+              backdropFilter: "blur(18px)",
+              pointerEvents: "auto",
             }}
           >
             <nav
@@ -1783,7 +1891,8 @@ export default function PortfolioPage() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="portfolio-mobile-nav-link"
+                  className={`portfolio-mobile-nav-link ${activeSection === item.label ? "active" : ""}`}
+                  aria-current={activeSection === item.label ? "page" : undefined}
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
@@ -3894,9 +4003,10 @@ export default function PortfolioPage() {
                         }}
                       >
                         <i className="fa-solid fa-arrow-up-right-from-square" />
-                        Live Demo
+                        {project.ctaLabel || "Live Demo"}
                       </a>
 
+                      {project.githubUrl && (
                       <a
                         className="project-card-action"
                         href={project.githubUrl}
@@ -3933,8 +4043,10 @@ export default function PortfolioPage() {
                         <i className="fa-brands fa-github" />
                         GitHub
                       </a>
+                      )}
                     </div>
 
+                    {project.detailsUrl && (
                     <a
                       href={project.detailsUrl}
                       style={{
@@ -3949,6 +4061,7 @@ export default function PortfolioPage() {
                     >
                       View details <i className="fa-solid fa-arrow-right" />
                     </a>
+                    )}
                   </div>
                 </div>
               ))}
