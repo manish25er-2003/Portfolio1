@@ -112,17 +112,64 @@ const projects = [
     githubUrl: "https://github.com/manish25er-2003/RoomSpot",
     detailsUrl: "/projects/roomspot/",
   },
+];
+
+const careerPilotShowcaseScreens = [
   {
-    title: "SmartBank System",
-    category: "Banking & Finance",
-    description:
-      "A secure banking application for account management, transaction control, and reliable financial workflows.",
-    technologies: ["Java", "MySQL", "Swing"],
-    image:
-      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
-    liveUrl: "https://github.com/mainshKumar50/SmartBanksys/tree/master",
-    githubUrl: "https://github.com/mainshKumar50/SmartBanksys/tree/master",
-    detailsUrl: "/projects/smartbank-system/",
+    id: "home",
+    label: "Home",
+    kind: "live",
+    src: "https://apps.manishpro.in/",
+    description: "CareerPilot AI live mobile Home page",
+  },
+  {
+    id: "dashboard",
+    label: "User Dashboard",
+    kind: "image",
+    src: "/careerpilot-user-dashboard-mobile.jpg",
+    description: "Actual CareerPilot AI mobile User Dashboard screenshot",
+  },
+  {
+    id: "features",
+    label: "Features",
+    kind: "live",
+    src: "https://apps.manishpro.in/features",
+    description: "CareerPilot AI live mobile features page",
+  },
+  {
+    id: "about",
+    label: "About",
+    kind: "live",
+    src: "https://apps.manishpro.in/about",
+    description: "CareerPilot AI live mobile About page",
+  },
+  {
+    id: "contact",
+    label: "Contact",
+    kind: "live",
+    src: "https://apps.manishpro.in/contact",
+    description: "CareerPilot AI live mobile Contact page",
+  },
+  {
+    id: "developer",
+    label: "Developer",
+    kind: "live",
+    src: "https://apps.manishpro.in/developer",
+    description: "CareerPilot AI live mobile Developer page",
+  },
+  {
+    id: "login",
+    label: "Login",
+    kind: "live",
+    src: "https://apps.manishpro.in/login",
+    description: "CareerPilot AI live mobile Login page",
+  },
+  {
+    id: "register",
+    label: "Register",
+    kind: "live",
+    src: "https://apps.manishpro.in/register",
+    description: "CareerPilot AI live mobile Register page",
   },
 ];
 
@@ -221,9 +268,34 @@ function TypewriterText({ phrases, textStyle, cursorStyle }) {
 export default function PortfolioPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("Home");
+  const [careerPilotScreenIndex, setCareerPilotScreenIndex] = useState(1);
+  const [careerPilotSlideshowPaused, setCareerPilotSlideshowPaused] =
+    useState(false);
   const [formMessage, setFormMessage] = useState("");
   const [formMessageType, setFormMessageType] = useState("success");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const careerPilotScreens = [
+    careerPilotShowcaseScreens[
+      (careerPilotScreenIndex + careerPilotShowcaseScreens.length - 1) %
+        careerPilotShowcaseScreens.length
+    ],
+    careerPilotShowcaseScreens[careerPilotScreenIndex],
+    careerPilotShowcaseScreens[
+      (careerPilotScreenIndex + 1) % careerPilotShowcaseScreens.length
+    ],
+  ];
+
+  useEffect(() => {
+    if (careerPilotSlideshowPaused) return undefined;
+
+    const intervalId = window.setInterval(() => {
+      setCareerPilotScreenIndex(
+        (index) => (index + 1) % careerPilotShowcaseScreens.length,
+      );
+    }, 6000);
+
+    return () => window.clearInterval(intervalId);
+  }, [careerPilotSlideshowPaused]);
 
   useEffect(() => {
     const updateActiveSection = () => {
@@ -411,7 +483,7 @@ export default function PortfolioPage() {
           position: relative;
           height: 64px;
           padding: 0 12px 0 14px;
-          border-radius: 18px;
+          border-radius: 999px;
           border: 1px solid rgba(148, 163, 184, 0.12);
           background: rgba(11, 15, 25, 0.82);
           box-shadow: 0 14px 36px rgba(2, 6, 23, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.025);
@@ -423,9 +495,38 @@ export default function PortfolioPage() {
           display: none;
           align-items: center;
           justify-content: center;
-          gap: 10px;
+          gap: 8px;
           margin-left: auto;
           flex-shrink: 0;
+        }
+
+        .portfolio-resume-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          min-height: 40px;
+          padding: 0 15px;
+          border: 1px solid rgba(99, 102, 241, 0.42);
+          border-radius: 999px;
+          background: rgba(99, 102, 241, 0.12);
+          color: #e2e8f0;
+          text-decoration: none;
+          font-size: 13px;
+          font-weight: 700;
+          white-space: nowrap;
+          transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .portfolio-resume-button:hover {
+          background: rgba(99, 102, 241, 0.22);
+          border-color: rgba(6, 182, 212, 0.5);
+          transform: translateY(-1px);
+        }
+
+        .portfolio-desktop-resume {
+          position: relative;
+          z-index: 2;
         }
 
         .portfolio-mobile-hire-btn {
@@ -433,7 +534,7 @@ export default function PortfolioPage() {
           align-items: center;
           justify-content: center;
           padding: 0.55rem 0.7rem;
-          border-radius: 12px;
+          border-radius: 999px;
           background: linear-gradient(135deg, #6366f1, #06b6d4);
           color: #fff;
           text-decoration: none;
@@ -450,7 +551,7 @@ export default function PortfolioPage() {
           justify-content: center;
           width: 38px;
           height: 38px;
-          border-radius: 12px;
+          border-radius: 50%;
           border: 1px solid rgba(148, 163, 184, 0.28);
           background: rgba(15, 23, 42, 0.45);
           color: #e2e8f0;
@@ -493,6 +594,314 @@ export default function PortfolioPage() {
           background: linear-gradient(135deg, rgba(99, 102, 241, 0.16), rgba(6, 182, 212, 0.1));
           color: #ffffff;
           box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
+        }
+
+        .careerpilot-showcase-section {
+          position: relative;
+          overflow: hidden;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          background:
+            radial-gradient(ellipse at 75% 48%, rgba(99, 102, 241, 0.11), transparent 36%),
+            linear-gradient(180deg, #0b0f19, #0d1321);
+        }
+
+        .careerpilot-showcase-layout {
+          position: relative;
+          z-index: 1;
+          display: grid;
+          grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+          align-items: center;
+          gap: 42px;
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 88px 24px;
+        }
+
+        .careerpilot-showcase-copy {
+          min-width: 0;
+        }
+
+        .careerpilot-showcase-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+          border: 1px solid rgba(99, 102, 241, 0.3);
+          border-radius: 999px;
+          background: rgba(99, 102, 241, 0.1);
+          color: #c7d2fe;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+        }
+
+        .careerpilot-showcase-badge::before {
+          content: "";
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #6366f1, #06b6d4);
+          box-shadow: 0 0 12px rgba(99, 102, 241, 0.55);
+        }
+
+        .careerpilot-showcase-title {
+          margin: 20px 0 14px;
+          color: #f8fafc;
+          font-size: clamp(2.3rem, 4vw, 3.5rem);
+          font-weight: 800;
+          letter-spacing: -0.055em;
+          line-height: 1.04;
+        }
+
+        .careerpilot-showcase-description {
+          max-width: 470px;
+          margin: 0;
+          color: #cbd5e1;
+          font-size: 16px;
+          line-height: 1.75;
+        }
+
+        .careerpilot-showcase-techs {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 22px;
+        }
+
+        .careerpilot-showcase-tech {
+          padding: 7px 10px;
+          border: 1px solid rgba(148, 163, 184, 0.17);
+          border-radius: 999px;
+          background: rgba(15, 23, 42, 0.72);
+          color: #dbeafe;
+          font-size: 12px;
+          font-weight: 600;
+        }
+
+        .careerpilot-showcase-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 26px;
+        }
+
+        .careerpilot-showcase-live-link {
+          display: inline-flex;
+          min-height: 46px;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+          padding: 0 18px;
+          border: 1px solid rgba(125, 211, 252, 0.32);
+          border-radius: 12px;
+          background: linear-gradient(120deg, #4f46e5, #0891b2);
+          box-shadow: 0 10px 24px rgba(79, 70, 229, 0.22);
+          color: #fff;
+          font-size: 14px;
+          font-weight: 700;
+          text-decoration: none;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .careerpilot-showcase-live-link:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 14px 28px rgba(79, 70, 229, 0.3);
+        }
+
+        .careerpilot-showcase-note {
+          margin: 18px 0 0;
+          color: #94a3b8;
+          font-size: 12px;
+          line-height: 1.55;
+        }
+
+        .careerpilot-device-stage {
+          position: relative;
+          width: 100%;
+          max-width: 700px;
+          height: 515px;
+          margin: 0 auto;
+          perspective: 1200px;
+        }
+
+        .careerpilot-device {
+          position: absolute;
+          box-sizing: border-box;
+          overflow: hidden;
+          border: 1px solid rgba(203, 213, 225, 0.48);
+          border-radius: 36px;
+          background: linear-gradient(145deg, #293244, #080b12 34%, #171e2b);
+          padding: 7px;
+          box-shadow: 0 26px 56px rgba(0, 0, 0, 0.46), 0 7px 20px rgba(2, 6, 23, 0.36);
+          transform-style: preserve-3d;
+        }
+
+        .careerpilot-device-screen {
+          position: absolute;
+          inset: 7px;
+          overflow: hidden;
+          border-radius: 29px;
+          background: #fff;
+        }
+
+        .careerpilot-device-screen img,
+        .careerpilot-device-screen iframe {
+          display: block;
+          width: 100%;
+          height: 100%;
+          border: 0;
+        }
+
+        .careerpilot-device-screen img {
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .careerpilot-device-screen iframe {
+          background: #fff;
+        }
+
+        .careerpilot-device-notch {
+          position: absolute;
+          z-index: 2;
+          top: 11px;
+          left: 50%;
+          width: 64px;
+          height: 14px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 999px;
+          background: #090b12;
+          transform: translateX(-50%);
+          pointer-events: none;
+        }
+
+        .careerpilot-device-label {
+          position: absolute;
+          z-index: 4;
+          top: 20px;
+          left: 50%;
+          max-width: calc(100% - 32px);
+          overflow: hidden;
+          padding: 6px 10px;
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          border-radius: 999px;
+          background: rgba(11, 15, 25, 0.78);
+          color: #e2e8f0;
+          font-size: 10px;
+          font-weight: 700;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          transform: translateX(-50%);
+          backdrop-filter: blur(8px);
+          pointer-events: none;
+        }
+
+        .careerpilot-device-screen-content {
+          width: 100%;
+          height: 100%;
+          animation: careerpilot-screen-enter 0.38s ease both;
+        }
+
+        .careerpilot-device-center {
+          z-index: 3;
+          top: 12px;
+          left: 50%;
+          width: 226px;
+          height: 480px;
+          transform: translateX(-50%);
+        }
+
+        .careerpilot-device-left {
+          z-index: 1;
+          top: 58px;
+          left: calc(50% - 188px);
+          width: 194px;
+          height: 410px;
+          transform: rotate(-8deg);
+        }
+
+        .careerpilot-device-right {
+          z-index: 2;
+          top: 58px;
+          left: calc(50% + 10px);
+          width: 194px;
+          height: 410px;
+          transform: rotate(8deg);
+        }
+
+        .careerpilot-showcase-controls {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+          margin-top: 8px;
+        }
+
+        .careerpilot-showcase-control {
+          display: inline-flex;
+          width: 40px;
+          height: 40px;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(148, 163, 184, 0.22);
+          border-radius: 50%;
+          background: rgba(15, 23, 42, 0.82);
+          color: #e2e8f0;
+          cursor: pointer;
+          transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .careerpilot-showcase-control:hover {
+          transform: translateY(-1px);
+          border-color: rgba(99, 102, 241, 0.55);
+          background: rgba(99, 102, 241, 0.18);
+        }
+
+        .careerpilot-showcase-indicators {
+          display: flex;
+          max-width: 100%;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin: 14px auto 0;
+          padding: 0 16px;
+        }
+
+        .careerpilot-showcase-indicator {
+          width: 8px;
+          height: 8px;
+          flex: 0 0 8px;
+          padding: 0;
+          border: 0;
+          border-radius: 999px;
+          background: rgba(148, 163, 184, 0.4);
+          cursor: pointer;
+          transition: width 0.25s ease, flex-basis 0.25s ease, background 0.25s ease;
+        }
+
+        .careerpilot-showcase-indicator:hover {
+          background: rgba(203, 213, 225, 0.8);
+        }
+
+        .careerpilot-showcase-indicator.active {
+          width: 22px;
+          flex-basis: 22px;
+          background: linear-gradient(90deg, #6366f1, #06b6d4);
+        }
+
+        .careerpilot-showcase-counter {
+          min-width: 145px;
+          color: #cbd5e1;
+          font-size: 12px;
+          font-weight: 600;
+          text-align: center;
+        }
+
+        @keyframes careerpilot-screen-enter {
+          from { opacity: 0.72; transform: translateY(5px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         
         .text-gradient {
@@ -1218,7 +1627,36 @@ export default function PortfolioPage() {
           }
         }
 
+        @media (min-width: 981px) and (max-width: 1120px) {
+          .portfolio-desktop-nav {
+            display: none !important;
+          }
+
+          .portfolio-mobile-header-actions,
+          .portfolio-mobile-menu-toggle {
+            display: flex !important;
+          }
+
+          .portfolio-desktop-resume {
+            display: none !important;
+          }
+        }
+
         @media (max-width: 980px) {
+          .careerpilot-showcase-layout {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 28px;
+          }
+
+          .careerpilot-showcase-copy {
+            max-width: 680px;
+            margin: 0 auto;
+          }
+
+          .careerpilot-device-stage {
+            max-width: 680px;
+          }
+
           .about-layout {
             grid-template-columns: 1fr;
           }
@@ -1457,6 +1895,45 @@ export default function PortfolioPage() {
         .contact-submit:hover { background: #0891b2; transform: translateY(-1px); }
 
         @media (max-width: 767px) {
+          .careerpilot-showcase-layout {
+            gap: 22px;
+            padding: 72px 18px;
+          }
+
+          .careerpilot-showcase-copy {
+            text-align: center;
+          }
+
+          .careerpilot-showcase-title {
+            font-size: clamp(2.2rem, 11vw, 3rem);
+          }
+
+          .careerpilot-showcase-description {
+            margin: 0 auto;
+            font-size: 15px;
+          }
+
+          .careerpilot-showcase-techs,
+          .careerpilot-showcase-actions {
+            justify-content: center;
+          }
+
+          .careerpilot-device-stage {
+            height: clamp(460px, 128vw, 520px);
+          }
+
+          .careerpilot-device-left,
+          .careerpilot-device-right {
+            display: none;
+          }
+
+          .careerpilot-device-center {
+            top: 8px;
+            width: min(232px, 66vw);
+            height: auto;
+            aspect-ratio: 226 / 480;
+          }
+
           .portfolio-header-shell,
           .portfolio-mobile-menu-panel {
             width: calc(100% - 24px) !important;
@@ -1464,7 +1941,13 @@ export default function PortfolioPage() {
 
           .portfolio-header-shell {
             height: 58px !important;
-            border-radius: 15px !important;
+            border-radius: 999px !important;
+          }
+
+          .portfolio-resume-button {
+            min-height: 36px;
+            padding: 0 11px;
+            font-size: 12px;
           }
 
           #contact {
@@ -1597,6 +2080,10 @@ export default function PortfolioPage() {
           .project-card-action { min-width: 110px !important; width: auto; padding: 10px 12px !important; font-size: 13px !important; }
 
           .portfolio-desktop-nav {
+            display: none !important;
+          }
+
+          .portfolio-desktop-resume {
             display: none !important;
           }
 
@@ -1839,7 +2326,27 @@ export default function PortfolioPage() {
             ))}
           </nav>
 
+          <a
+            href="/Manish_resumeB26.pdf"
+            download="Manish_resumeB26.pdf"
+            className="portfolio-resume-button portfolio-desktop-resume"
+            aria-label="Download resume PDF"
+          >
+            <i className="fa-solid fa-download" aria-hidden="true" />
+            Resume
+          </a>
+
           <div className="portfolio-mobile-header-actions">
+            <a
+              href="/Manish_resumeB26.pdf"
+              download="Manish_resumeB26.pdf"
+              className="portfolio-resume-button"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Download resume PDF"
+            >
+              <i className="fa-solid fa-download" aria-hidden="true" />
+              Resume
+            </a>
             <a
               href="#contact"
               className="portfolio-mobile-hire-btn"
@@ -1853,13 +2360,6 @@ export default function PortfolioPage() {
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(!menuOpen)}
               className="portfolio-mobile-menu-toggle"
-              style={{
-                background: "none",
-                border: "none",
-                color: "#cbd5e1",
-                cursor: "pointer",
-                fontSize: "20px",
-              }}
             >
               <i className={`fa-solid ${menuOpen ? "fa-xmark" : "fa-bars"}`} />
             </button>
@@ -1874,7 +2374,7 @@ export default function PortfolioPage() {
               width: "calc(100% - 48px)",
               margin: "8px auto 0",
               padding: "10px",
-              borderRadius: "16px",
+              borderRadius: "22px",
               border: "1px solid rgba(148, 163, 184, 0.12)",
               background: "rgba(11, 15, 25, 0.94)",
               boxShadow: "0 16px 38px rgba(2, 6, 23, 0.32)",
@@ -3732,6 +4232,182 @@ export default function PortfolioPage() {
                   </span>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="careerpilot-showcase"
+          className="careerpilot-showcase-section"
+          aria-labelledby="careerpilot-showcase-title"
+        >
+          <div className="careerpilot-showcase-layout">
+            <div className="careerpilot-showcase-copy">
+              <span className="careerpilot-showcase-badge">
+                AI-Powered Career Platform
+              </span>
+              <h2
+                id="careerpilot-showcase-title"
+                className="careerpilot-showcase-title"
+              >
+                CareerPilot AI
+              </h2>
+              <p className="careerpilot-showcase-description">
+                An AI-powered career platform designed to help users manage
+                their skills, resumes, job applications, interview preparation
+                and career progress.
+              </p>
+
+              <div
+                className="careerpilot-showcase-techs"
+                aria-label="Technologies used"
+              >
+                {["Laravel", "PHP", "MySQL", "JavaScript", "AI"].map((tech) => (
+                  <span className="careerpilot-showcase-tech" key={tech}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="careerpilot-showcase-actions">
+                <a
+                  className="careerpilot-showcase-live-link"
+                  href="https://apps.manishpro.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Live Project
+                  <i
+                    className="fa-solid fa-arrow-up-right-from-square"
+                    aria-hidden="true"
+                  />
+                </a>
+              </div>
+
+              <p className="careerpilot-showcase-note">
+                Explore live mobile pages alongside the supplied User
+                Dashboard screen.
+              </p>
+            </div>
+
+            <div>
+              <div className="careerpilot-device-stage">
+                {careerPilotScreens.map((screen, index) => {
+                  const position = ["left", "center", "right"][index];
+
+                  return (
+                    <div
+                      className={`careerpilot-device careerpilot-device-${position}`}
+                      key={screen.id}
+                      aria-hidden={position !== "center"}
+                    >
+                      <div className="careerpilot-device-screen">
+                        <div
+                          className="careerpilot-device-screen-content"
+                          key={`${screen.id}-screen`}
+                        >
+                          {screen.kind === "image" ? (
+                            <img src={screen.src} alt={screen.description} />
+                          ) : (
+                            <iframe
+                              src={screen.src}
+                              title={screen.description}
+                              loading="lazy"
+                              tabIndex={position === "center" ? 0 : -1}
+                              referrerPolicy="strict-origin-when-cross-origin"
+                              style={{
+                                pointerEvents:
+                                  position === "center" ? "auto" : "none",
+                              }}
+                            />
+                          )}
+                        </div>
+                        <span className="careerpilot-device-notch" />
+                        <span className="careerpilot-device-label">
+                          {screen.label}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div
+                className="careerpilot-showcase-controls"
+                aria-label="CareerPilot AI screen controls"
+              >
+                <button
+                  type="button"
+                  className="careerpilot-showcase-control"
+                  aria-label="Show previous CareerPilot screen"
+                  onClick={() =>
+                    setCareerPilotScreenIndex(
+                      (index) =>
+                        (index +
+                          careerPilotShowcaseScreens.length -
+                          1) %
+                        careerPilotShowcaseScreens.length,
+                    )
+                  }
+                >
+                  <i className="fa-solid fa-arrow-left" aria-hidden="true" />
+                </button>
+                <span
+                  className="careerpilot-showcase-counter"
+                  aria-live="polite"
+                >
+                  {careerPilotShowcaseScreens[careerPilotScreenIndex].label}
+                  {" · "}
+                  {careerPilotScreenIndex + 1} /{" "}
+                  {careerPilotShowcaseScreens.length}
+                </span>
+                <button
+                  type="button"
+                  className="careerpilot-showcase-control"
+                  aria-label="Show next CareerPilot screen"
+                  onClick={() =>
+                    setCareerPilotScreenIndex(
+                      (index) =>
+                        (index + 1) % careerPilotShowcaseScreens.length,
+                    )
+                  }
+                >
+                  <i className="fa-solid fa-arrow-right" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  className="careerpilot-showcase-control"
+                  aria-label={
+                    careerPilotSlideshowPaused
+                      ? "Resume CareerPilot slideshow"
+                      : "Pause CareerPilot slideshow"
+                  }
+                  aria-pressed={careerPilotSlideshowPaused}
+                  onClick={() =>
+                    setCareerPilotSlideshowPaused((paused) => !paused)
+                  }
+                >
+                  <i
+                    className={`fa-solid ${careerPilotSlideshowPaused ? "fa-play" : "fa-pause"}`}
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+              <div
+                className="careerpilot-showcase-indicators"
+                aria-label="Choose a CareerPilot screen"
+              >
+                {careerPilotShowcaseScreens.map((screen, index) => (
+                  <button
+                    type="button"
+                    key={screen.id}
+                    className={`careerpilot-showcase-indicator ${index === careerPilotScreenIndex ? "active" : ""}`}
+                    aria-label={`Show ${screen.label} slide`}
+                    aria-pressed={index === careerPilotScreenIndex}
+                    onClick={() => setCareerPilotScreenIndex(index)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
