@@ -118,76 +118,118 @@ const careerPilotShowcaseScreens = [
   {
     id: "home",
     label: "Home",
-    kind: "live",
-    src: "https://apps.manishpro.in/",
-    description: "CareerPilot AI live mobile Home page",
+    kind: "image",
+    src: "/iPhone-14-PRO-apps.manishpro.in.webp",
+    description: "CareerPilot AI mobile Home page",
+  },
+  {
+    id: "register",
+    label: "Register",
+    kind: "image",
+    src: "/iPhone-14-PRO-apps.manishpro.in%20(1).webp",
+    description: "CareerPilot AI mobile Register page",
+  },
+  {
+    id: "login",
+    label: "Login",
+    kind: "image",
+    src: "/iPhone-14-PRO-apps.manishpro.in%20(2).webp",
+    description: "CareerPilot AI mobile Login page",
   },
   {
     id: "dashboard",
     label: "User Dashboard",
     kind: "image",
-    src: "/careerpilot-user-dashboard-mobile.jpg",
-    description: "Actual CareerPilot AI mobile User Dashboard screenshot",
+    src: "/iPhone-14-PRO-apps.manishpro.in%20(3).webp",
+    description: "CareerPilot AI mobile User Dashboard",
   },
   {
-    id: "features",
-    label: "Features",
-    kind: "live",
-    src: "https://apps.manishpro.in/features",
-    description: "CareerPilot AI live mobile features page",
-  },
-  {
-    id: "about",
-    label: "About",
-    kind: "live",
-    src: "https://apps.manishpro.in/about",
-    description: "CareerPilot AI live mobile About page",
-  },
-  {
-    id: "contact",
-    label: "Contact",
-    kind: "live",
-    src: "https://apps.manishpro.in/contact",
-    description: "CareerPilot AI live mobile Contact page",
-  },
-  {
-    id: "developer",
-    label: "Developer",
-    kind: "live",
-    src: "https://apps.manishpro.in/developer",
-    description: "CareerPilot AI live mobile Developer page",
-  },
-  {
-    id: "login",
-    label: "Login",
-    kind: "live",
-    src: "https://apps.manishpro.in/login",
-    description: "CareerPilot AI live mobile Login page",
-  },
-  {
-    id: "register",
-    label: "Register",
-    kind: "live",
-    src: "https://apps.manishpro.in/register",
-    description: "CareerPilot AI live mobile Register page",
+    id: "resume",
+    label: "Resume Upload",
+    kind: "image",
+    src: "/iPhone-14-PRO-apps.manishpro.in%20(4).webp",
+    description: "CareerPilot AI mobile Resume Upload page",
   },
 ];
 
 const careerPilotLaptopScreens = [
-  { id: "home", label: "Home", src: "https://apps.manishpro.in/" },
   {
-    id: "dashboard-preview",
-    label: "Dashboard Preview",
+    id: "hero-dashboard",
+    label: "Hero Dashboard",
     kind: "image",
-    src: "/CareerPilot%20AI%20Project%20Showcase.png",
-    alt: "CareerPilot AI project showcase featuring the desktop dashboard",
+    src: "/Career%20Copilot%20Hero%20Dashboard.png",
+    alt: "Career Copilot hero page with its dashboard preview",
   },
-  { id: "features", label: "Features", src: "https://apps.manishpro.in/features" },
-  { id: "login", label: "Login", src: "https://apps.manishpro.in/login" },
-  { id: "register", label: "Register", src: "https://apps.manishpro.in/register" },
-  { id: "about", label: "About", src: "https://apps.manishpro.in/about" },
-  { id: "developer", label: "Developer", src: "https://apps.manishpro.in/developer" },
-  { id: "contact", label: "Contact", src: "https://apps.manishpro.in/contact" },
+  {
+    id: "dashboard-showcase",
+    label: "Dashboard Showcase",
+    kind: "image",
+    src: "/CareerPilot%20AI%20Dashboard%20Showcase.png",
+    alt: "CareerPilot AI dashboard showcase",
+  },
+  {
+    id: "register",
+    label: "Register",
+    kind: "image",
+    src: "/Macbook-Air-apps.manishpro.in%20(2).webp",
+    alt: "CareerPilot AI registration page on a MacBook",
+  },
+  {
+    id: "login",
+    label: "Login",
+    kind: "image",
+    src: "/Macbook-Air-apps.manishpro.in%20(3).webp",
+    alt: "CareerPilot AI login page on a MacBook",
+  },
+  {
+    id: "dashboard",
+    label: "Dashboard",
+    kind: "image",
+    src: "/Macbook-Air-apps.manishpro.in%20(5).webp",
+    alt: "CareerPilot AI user dashboard on a MacBook",
+  },
+  {
+    id: "profile",
+    label: "Profile",
+    kind: "image",
+    src: "/Macbook-Air-apps.manishpro.in%20(6).webp",
+    alt: "CareerPilot AI profile page on a MacBook",
+  },
+  {
+    id: "skills",
+    label: "Skills",
+    kind: "image",
+    src: "/Macbook-Air-apps.manishpro.in%20(7).webp",
+    alt: "CareerPilot AI skills page on a MacBook",
+  },
+  {
+    id: "resume",
+    label: "Resume Upload",
+    kind: "image",
+    src: "/Macbook-Air-apps.manishpro.in%20(8).webp",
+    alt: "CareerPilot AI resume upload page on a MacBook",
+  },
+  {
+    id: "applications",
+    label: "Job Applications",
+    kind: "image",
+    src: "/Macbook-Air-apps.manishpro.in%20(9).webp",
+    alt: "CareerPilot AI job applications page on a MacBook",
+  },
+  {
+    id: "progress",
+    label: "Progress Reports",
+    kind: "image",
+    src: "/Macbook-Air-apps.manishpro.in%20(12).webp",
+    alt: "CareerPilot AI progress reports page on a MacBook",
+  },
+  {
+    id: "settings",
+    label: "Settings",
+    kind: "image",
+    src: "/Macbook-Air-apps.manishpro.in%20(13).webp",
+    alt: "CareerPilot AI settings page on a MacBook",
+  },
 ];
 
 const experience = [
@@ -4702,8 +4744,8 @@ export default function PortfolioPage() {
               </div>
 
               <p className="careerpilot-showcase-note">
-                Explore live mobile pages alongside the supplied User
-                Dashboard screen.
+                Explore mobile screenshots of the Home, Register, Login,
+                Dashboard and Resume Upload pages.
               </p>
             </div>
 
@@ -4840,7 +4882,7 @@ export default function PortfolioPage() {
               </span>
               <h2 id="careerpilot-laptop-title">CareerPilot AI</h2>
               <p>
-                Explore the live CareerPilot AI platform and its public pages.
+                Explore CareerPilot AI pages with these MacBook screenshots.
               </p>
             </header>
 
@@ -4935,76 +4977,6 @@ export default function PortfolioPage() {
                   onClick={() => setCareerPilotLaptopScreenIndex(index)}
                 />
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section
-          className="careerpilot-video-showcase-section"
-          aria-labelledby="careerpilot-video-showcase-title"
-        >
-          <div className="careerpilot-video-showcase-shell">
-            <div className="careerpilot-video-showcase-header">
-              <div className="careerpilot-video-showcase-copy">
-                <span className="careerpilot-video-showcase-badge">
-                  AI-Powered Career Platform
-                </span>
-                <h2
-                  id="careerpilot-video-showcase-title"
-                  className="careerpilot-video-showcase-title"
-                >
-                  CareerPilot AI
-                </h2>
-                <p className="careerpilot-video-showcase-description">
-                  An AI-powered career growth platform designed to help users
-                  manage their profiles, skills, resumes, job applications and
-                  interview preparation.
-                </p>
-                <div
-                  className="careerpilot-video-showcase-techs"
-                  aria-label="Technologies used"
-                >
-                  {["Laravel", "PHP", "MySQL", "JavaScript", "AI"].map((tech) => (
-                    <span className="careerpilot-video-showcase-tech" key={tech}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="careerpilot-video-showcase-actions">
-                <a
-                  className="careerpilot-video-showcase-link"
-                  href="https://apps.manishpro.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Live Project
-                  <i
-                    className="fa-solid fa-arrow-up-right-from-square"
-                    aria-hidden="true"
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div className="careerpilot-video-frame">
-              <video
-                className="careerpilot-video"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                width="1280"
-                height="720"
-                aria-label="CareerPilot AI product showcase video"
-              >
-                <source
-                  src="/CareerPilot%20AI%20_%20Your%20AI-Powered%20Career%20Growth%20Partner.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support HTML video.
-              </video>
             </div>
           </div>
         </section>
